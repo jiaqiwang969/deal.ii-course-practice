@@ -229,6 +229,12 @@ gtest_BINARY_DIR:STATIC=/workspaces/deal.ii-course-practice/build-container
 //Value Computed by CMake
 gtest_SOURCE_DIR:STATIC=/workspaces/deal.ii-course-practice
 
+//Dependencies for the target
+step-1-lib_LIB_DEPENDS:STATIC=general;deal.ii.g;
+
+//Dependencies for the target
+step-2-lib_LIB_DEPENDS:STATIC=general;deal.ii.g;
+
 
 ########################
 # INTERNAL cache entries

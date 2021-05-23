@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "gtest"
+			"path" : "step-1"
 		}
 	],
 	"backtrace" : 1,
@@ -36,7 +36,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 16,
+				"line" : 11,
 				"parent" : 0
 			},
 			{
@@ -265,7 +265,7 @@
 			]
 		}
 	],
-	"id" : "gtest::@6890427a1f51a3e7e1df",
+	"id" : "step-1::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -280,10 +280,6 @@
 			},
 			{
 				"fragment" : "-Wl,-rpath,/usr/lib/aarch64-linux-gnu/hdf5/openmpi:/usr/lib/aarch64-linux-gnu/openmpi/lib:/usr/lib/aarch64-linux-gnu/hdf5/openmpi/lib/lib",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "/usr/lib/aarch64-linux-gnu/libgtest.a",
 				"role" : "libraries"
 			},
 			{
@@ -1030,8 +1026,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "gtest",
-	"nameOnDisk" : "gtest",
+	"name" : "step-1",
+	"nameOnDisk" : "step-1",
 	"paths" : 
 	{
 		"build" : ".",
@@ -1052,7 +1048,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "pythagoras.cc",
+			"path" : "source/step-1.cc",
 			"sourceGroupIndex" : 0
 		}
 	],

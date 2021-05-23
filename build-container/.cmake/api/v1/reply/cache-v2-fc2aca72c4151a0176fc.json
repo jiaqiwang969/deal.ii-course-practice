@@ -1284,6 +1284,30 @@
 			],
 			"type" : "STATIC",
 			"value" : "/workspaces/deal.ii-course-practice"
+		},
+		{
+			"name" : "step-1-lib_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;deal.ii.g;"
+		},
+		{
+			"name" : "step-2-lib_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;deal.ii.g;"
 		}
 	],
 	"kind" : "cache",
