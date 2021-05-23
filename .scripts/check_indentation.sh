@@ -1,4 +1,4 @@
 #!/bin/sh
-./scripts/indent
+.scripts/indent
 git diff
 git diff-files --quiet 
