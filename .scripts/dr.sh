@@ -3,5 +3,5 @@ docker run  \
     --user $(id -u):$(id -g) \
     --rm -t \
     -v `pwd`:/builds/app \
-    jiaqiknight/dealii:vscode-arm64 \
+    heltai/dealii:vscode \
     /bin/sh -c "cd /builds/app; $@"
