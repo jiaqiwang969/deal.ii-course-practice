@@ -1,0 +1,5 @@
+add_test( Pitagora.Norm /workspaces/deal.ii-course-practice/build-container/gtest [==[--gtest_filter=Pitagora.Norm]==] --gtest_also_run_disabled_tests)
+set_tests_properties( Pitagora.Norm PROPERTIES WORKING_DIRECTORY /workspaces/deal.ii-course-practice/build-container)
+add_test( Pitagora.Distance /workspaces/deal.ii-course-practice/build-container/gtest [==[--gtest_filter=Pitagora.Distance]==] --gtest_also_run_disabled_tests)
+set_tests_properties( Pitagora.Distance PROPERTIES WORKING_DIRECTORY /workspaces/deal.ii-course-practice/build-container)
+set( gtest_TESTS Pitagora.Norm Pitagora.Distance)
