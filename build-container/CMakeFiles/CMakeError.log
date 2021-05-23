@@ -1,11 +1,11 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /workspaces/deal.ii-course-practice/build-container/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja cmTC_988a4 && [1/2] Building C object CMakeFiles/cmTC_988a4.dir/src.c.o
-[2/2] Linking C executable cmTC_988a4
-FAILED: cmTC_988a4 
-: && /bin/gcc-9 -DCMAKE_HAVE_LIBC_PTHREAD  -rdynamic CMakeFiles/cmTC_988a4.dir/src.c.o  -o cmTC_988a4   && :
-/usr/bin/ld: CMakeFiles/cmTC_988a4.dir/src.c.o: in function `main':
+Run Build Command(s):/usr/bin/ninja cmTC_22693 && [1/2] Building C object CMakeFiles/cmTC_22693.dir/src.c.o
+[2/2] Linking C executable cmTC_22693
+FAILED: cmTC_22693 
+: && /bin/gcc-9 -DCMAKE_HAVE_LIBC_PTHREAD  -rdynamic CMakeFiles/cmTC_22693.dir/src.c.o  -o cmTC_22693   && :
+/usr/bin/ld: CMakeFiles/cmTC_22693.dir/src.c.o: in function `main':
 src.c:(.text+0x48): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x5c): undefined reference to `pthread_join'
@@ -36,10 +36,10 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /workspaces/deal.ii-course-practice/build-container/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja cmTC_f25c4 && [1/2] Building C object CMakeFiles/cmTC_f25c4.dir/CheckFunctionExists.c.o
-[2/2] Linking C executable cmTC_f25c4
-FAILED: cmTC_f25c4 
-: && /bin/gcc-9 -DCHECK_FUNCTION_EXISTS=pthread_create  -rdynamic CMakeFiles/cmTC_f25c4.dir/CheckFunctionExists.c.o  -o cmTC_f25c4  -lpthreads && :
+Run Build Command(s):/usr/bin/ninja cmTC_3e953 && [1/2] Building C object CMakeFiles/cmTC_3e953.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_3e953
+FAILED: cmTC_3e953 
+: && /bin/gcc-9 -DCHECK_FUNCTION_EXISTS=pthread_create  -rdynamic CMakeFiles/cmTC_3e953.dir/CheckFunctionExists.c.o  -o cmTC_3e953  -lpthreads && :
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
 ninja: build stopped: subcommand failed.
