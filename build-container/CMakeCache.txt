@@ -230,7 +230,7 @@ gtest_BINARY_DIR:STATIC=/workspaces/deal.ii-course-practice/build-container
 gtest_SOURCE_DIR:STATIC=/workspaces/deal.ii-course-practice
 
 //Dependencies for the target
-step-3-lib_LIB_DEPENDS:STATIC=general;deal.ii.g;
+poisson-lib_LIB_DEPENDS:STATIC=general;deal.ii.g;
 
 
 ########################

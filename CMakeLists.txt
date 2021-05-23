@@ -7,20 +7,24 @@ HINTS ${deal.II_DIR} ${DEAL_II_DIR} ../ ../../ $ENV{DEAL_II_DIR})
 
 DEAL_II_INITIALIZE_CACHED_VARIABLES()
 
-# Executable
-FILE(GLOB executable_files source/*cc)
-ADD_EXECUTABLE(step-3 ${executable_files})
-DEAL_II_SETUP_TARGET(step-3)
+# Deal.II example step-4
+ADD_EXECUTABLE(step-4 source/step-4.cc)
+DEAL_II_SETUP_TARGET(step-4)
+
+# Executable for the exerciese
+ADD_EXECUTABLE(poisson source/poisson.cc source/main.cc)
+DEAL_II_SETUP_TARGET(poisson)
 
 # Library of the executable
-ADD_LIBRARY(step-3-lib SHARED $<TARGET_OBJECTS:step-3>)
-DEAL_II_SETUP_TARGET(step-3-lib)
+ADD_LIBRARY(poisson-lib SHARED $<TARGET_OBJECTS:poisson>)
+DEAL_II_SETUP_TARGET(poisson-lib)
+
 
 # Tester executable
 FIND_PACKAGE(GTest)
 FILE(GLOB test_files tests/*cc)
 ADD_EXECUTABLE(gtest ${test_files})
-TARGET_LINK_LIBRARIES(gtest ${GTEST_LIBRARY} step-3-lib)   
+TARGET_LINK_LIBRARIES(gtest ${GTEST_LIBRARY} poisson-lib)   
 DEAL_II_SETUP_TARGET(gtest)
 
 INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS} ./include/)
