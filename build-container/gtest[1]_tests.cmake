@@ -1,0 +1,7 @@
+add_test( Poisson1DTester.MakeGrid /workspaces/deal.ii-course-practice/build-container/gtest [==[--gtest_filter=Poisson1DTester.MakeGrid]==] --gtest_also_run_disabled_tests)
+set_tests_properties( Poisson1DTester.MakeGrid PROPERTIES WORKING_DIRECTORY /workspaces/deal.ii-course-practice/build-container)
+add_test( Poisson2DTester.MakeGrid /workspaces/deal.ii-course-practice/build-container/gtest [==[--gtest_filter=Poisson2DTester.MakeGrid]==] --gtest_also_run_disabled_tests)
+set_tests_properties( Poisson2DTester.MakeGrid PROPERTIES WORKING_DIRECTORY /workspaces/deal.ii-course-practice/build-container)
+add_test( Poisson3DTester.MakeGrid /workspaces/deal.ii-course-practice/build-container/gtest [==[--gtest_filter=Poisson3DTester.MakeGrid]==] --gtest_also_run_disabled_tests)
+set_tests_properties( Poisson3DTester.MakeGrid PROPERTIES WORKING_DIRECTORY /workspaces/deal.ii-course-practice/build-container)
+set( gtest_TESTS Poisson1DTester.MakeGrid Poisson2DTester.MakeGrid Poisson3DTester.MakeGrid)
