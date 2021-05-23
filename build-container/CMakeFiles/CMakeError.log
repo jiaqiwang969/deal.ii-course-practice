@@ -1,11 +1,11 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /workspaces/deal.ii-course-practice/build-container/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja cmTC_d9845 && [1/2] Building C object CMakeFiles/cmTC_d9845.dir/src.c.o
-[2/2] Linking C executable cmTC_d9845
-FAILED: cmTC_d9845 
-: && /bin/gcc-9 -DCMAKE_HAVE_LIBC_PTHREAD   CMakeFiles/cmTC_d9845.dir/src.c.o  -o cmTC_d9845   && :
-/usr/bin/ld: CMakeFiles/cmTC_d9845.dir/src.c.o: in function `main':
+Run Build Command(s):/usr/bin/ninja cmTC_af2ee && [1/2] Building C object CMakeFiles/cmTC_af2ee.dir/src.c.o
+[2/2] Linking C executable cmTC_af2ee
+FAILED: cmTC_af2ee 
+: && /bin/gcc-9 -DCMAKE_HAVE_LIBC_PTHREAD   CMakeFiles/cmTC_af2ee.dir/src.c.o  -o cmTC_af2ee   && :
+/usr/bin/ld: CMakeFiles/cmTC_af2ee.dir/src.c.o: in function `main':
 src.c:(.text+0x48): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x5c): undefined reference to `pthread_join'
@@ -36,10 +36,10 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /workspaces/deal.ii-course-practice/build-container/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja cmTC_8502d && [1/2] Building C object CMakeFiles/cmTC_8502d.dir/CheckFunctionExists.c.o
-[2/2] Linking C executable cmTC_8502d
-FAILED: cmTC_8502d 
-: && /bin/gcc-9 -DCHECK_FUNCTION_EXISTS=pthread_create   CMakeFiles/cmTC_8502d.dir/CheckFunctionExists.c.o  -o cmTC_8502d  -lpthreads && :
+Run Build Command(s):/usr/bin/ninja cmTC_95736 && [1/2] Building C object CMakeFiles/cmTC_95736.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_95736
+FAILED: cmTC_95736 
+: && /bin/gcc-9 -DCHECK_FUNCTION_EXISTS=pthread_create   CMakeFiles/cmTC_95736.dir/CheckFunctionExists.c.o  -o cmTC_95736  -lpthreads && :
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
 ninja: build stopped: subcommand failed.
