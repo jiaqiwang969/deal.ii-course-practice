@@ -58,17 +58,16 @@
 
 %\pgfplotstableread[comment chars={d}]{../build/error.txt}\mytable
 \pgfplotstableread[comment chars={c}]{
-    cells  dofs  u_L2_norm u_H1_seminorm estimator 
-    192    833 1.334e-03     2.210e-02 2.427e-01 
-    408   1921 9.038e-04     1.587e-02 1.688e-01 
-    768   3201 1.673e-04     5.528e-03 6.058e-02 
-   1488   6465 1.214e-04     4.148e-03 4.465e-02 
-   3000  12337 2.190e-05     1.401e-03 1.532e-02 
-   6024  25137 1.491e-05     1.013e-03 1.101e-02 
-  12036  48817 2.720e-06     3.492e-04 3.820e-03 
-  24024  98257 1.871e-06     2.524e-04 2.754e-03 
-  48072 193633 3.410e-07     8.731e-05 9.559e-04 
-  96153 388821 2.331e-07     6.290e-05 6.876e-04 
+    cells dofs u_L2_norm u_Linfty_norm u_H1_norm estimator 
+    192  225 1.417e-01     1.472e-01 4.795e-01 6.646e-02 
+    312  372 1.426e-01     1.480e-01 4.811e-01 5.514e-02 
+    474  555 1.431e-01     1.483e-01 4.820e-01 4.465e-02 
+    684  765 1.435e-01     1.490e-01 4.829e-01 3.541e-02 
+   1077 1224 1.437e-01     1.491e-01 4.837e-01 2.977e-02 
+   1743 1947 1.438e-01     1.492e-01 4.839e-01 2.480e-02 
+   2535 2780 1.439e-01     1.492e-01 4.841e-01 1.955e-02 
+   3846 4120 1.439e-01     1.493e-01 4.844e-01 1.570e-02 
+   6462 6930 1.440e-01     1.493e-01 4.844e-01 1.324e-02 
 }\mytable
 
 \pgfplotsset{width=11cm,compat=1.8}
@@ -76,20 +75,22 @@
 \begin{tikzpicture}
 \begin{loglogaxis}[
     xlabel={\#DoFs},
-    ylabel={$L^2$, $H^1$, and estimator},
+    ylabel={$L^2$, $L^\infty$, $H^1$, and estimator},
     grid=both,
-    legend entries={$L^2$ error, $H^1$ error, Error Estimator}, 
+    legend entries={%$L^2$ error, $L^\infty$, $H^1$ error, 
+    Error Estimator}, 
     legend pos=outer north east
 ]
 
-\addplot table[x=0, y=2] {\mytable};
-\addplot table[x=0, y=3] {\mytable};
-\addplot table[x=0, y=4] {\mytable};
+% \addplot table[x=1, y=2] {\mytable};
+% \addplot table[x=1, y=3] {\mytable};
+% \addplot table[x=1, y=4] {\mytable};
+\addplot table[x=1, y=5] {\mytable};
 
-\logLogSlopeTriangleReversed{.9}{0.8}{0.7}{.5}{black}{0.5}
+\logLogSlopeTriangleReversed{.7}{0.3}{0.1}{.5}{black}{0.5}
 
 
-\logLogSlopeTriangleReversed{.9}{0.8}{0.05}{1}{black}{1}
+% \logLogSlopeTriangleReversed{.9}{0.8}{0.05}{1}{black}{1}
 
 \end{loglogaxis}
 \end{tikzpicture}

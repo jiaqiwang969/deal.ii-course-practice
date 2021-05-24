@@ -85,17 +85,31 @@ protected:
   void
   solve();
   void
+  estimate(); // 评估
+
+  void
+  mark(); // 标记加密位置
+  void
   output_results(
     const unsigned cycle) const; //输出网格（不同cycle的加密方式的文件名）
 
   Triangulation<dim>         triangulation;
   std::unique_ptr<FE_Q<dim>> fe;
-  DoFHandler<dim>            dof_handler;
+  std::unique_ptr<MappingQGeneric<dim>>
+                  mapping; // 原先mapping为默认，后续用于并行
+  DoFHandler<dim> dof_handler;
   AffineConstraints<double> constraints; // 存储所有约束, 用于处理挂起的节点
   SparsityPattern      sparsity_pattern;
   SparseMatrix<double> system_matrix;
   Vector<double>       solution;
   Vector<double>       system_rhs;
+
+  Vector<float> error_per_cell;           // 单个网格的误差
+  std::string   estimator_type = "exact"; // 评估策略，exact|kelly|residual
+  std::string   marking_strategy =
+    "global"; // 标记策略，global|fixed_fraction|fixed_number
+  std::pair<double, double> coarsening_and_refinement_factors =
+    {0.03, 0.3}; //评估加密参数
 
   FunctionParser<dim> forcing_term; // parameter 传呼
   FunctionParser<dim> coefficient;
@@ -107,7 +121,9 @@ protected:
 
 
 
-  unsigned int fe_degree           = 1;         // 默认初始参数， 1阶fe
+  unsigned int fe_degree      = 1; // 默认初始参数， 1阶fe
+  unsigned int mapping_degree = 1; // 映射阶数
+
   unsigned int n_refinements       = 2;         // 网格加密
   unsigned int n_refinement_cycles = 1;         // 误差评估再网格划分
   std::string  output_filename     = "poisson"; // 输出文件名
@@ -128,6 +144,8 @@ protected:
   std::string grid_generator_arguments = "0: 1: false"; // 边界序列
 
   ParsedConvergenceTable error_table;
+
+  bool use_direct_solver = true;
 
   template <typename Integral>
   friend class PossionTester; //开放测试权限
