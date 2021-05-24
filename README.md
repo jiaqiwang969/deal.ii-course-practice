@@ -380,3 +380,37 @@ https://www.dealii.org/current/doxygen/deal.II/classMeshWorker_1_1ScratchData.ht
 将`Threads::split_range`组件替换为基于使用`WorkStream::run`方法，并将运行时间与你原来的代码进行比较。
 
 7. 使用`Doxygen`语法记录`Poisson`类的所有方法和成员。确保GitHub行动`documentation.yaml`是有效的，并且自动生成你的代码的文档。如果一切正常。你应该能够以`https://username.github.io/sissa-mhpc-lab-07-username/`，一旦动作完成后，你就可以以‘web’的形式访问它。
+
+
+# Lab 08 - AFEM和分散的内存并行化
+
+
+### 说明
+
+对于下面的每一点，用执行指定任务的函数来扩展`Poisson`类，尽量减少你复制和粘贴的代码量，可能的话通过给现有函数添加参数来重组现有代码，并生成类似于`run`方法的包装器（例如，`run_exercise_3`）。
+
+一旦你创建了一个执行给定任务的函数，将其添加到`poisson-tester.cc`文件中，并确保所有练习都通过`gtest`可执行程序运行，例如，为每个练习添加一个测试，如下图所示
+片段。
+
+```C++
+TEST_F(PoissonTester, Exercise3) {
+   run_exercise_3();
+}
+```
+
+在本实验室结束时，你将修改你的Poisson代码，以便在多个线程上使用共享内存并行化运行，并且你将对基于任务的并行化有一些了解。
+### 执行
+
+1. 重复mpihello/main.cc文件中的基本MPI命令，了解事情是如何进行的
+
+2. 仔细阅读 "step-40 "的文档，并调整你的poisson求解器，使之成为一个并行的分布式求解器。
+
+3. 使求解器在 "hybrid "并行化模式下运行，即根据你在参数文件中指定的线程数，使用MPI和多线程并行地组装东西。
+
+4. 类似于讲座中的内容，使用``GridOut::write_vtk``和 "全局 "网格，将每个单独处理器的网格视图可视化。为此使用3个MPI任务
+
+5. 创建一个简单的网格（hyper_cube在全局范围内精炼两次），用两个MPI任务运行，为每个任务打印本地拥有的、本地活动的和本地相关的``IndexSet'`。
+
+6. 切换到释放模式（``make release``），决定一个全局细化水平，需要30-60秒的时间来解决，用1、2、4、8、12、16个MPI任务研究装配和解决时间。哪一个是最快的，根据你的机器有多少个核心，计时是否有意义？
+
+7. 通过切换到3D和改变几何形状来玩测试问题。你的选择!

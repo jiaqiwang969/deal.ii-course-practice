@@ -27,6 +27,7 @@
 #  include <deal.II/base/parameter_acceptor.h>
 #  include <deal.II/base/parsed_convergence_table.h>
 #  include <deal.II/base/quadrature_lib.h>
+#  include <deal.II/base/timer.h>
 
 #  include <deal.II/dofs/dof_handler.h>
 #  include <deal.II/dofs/dof_tools.h>
@@ -44,6 +45,9 @@
 #  include <deal.II/lac/solver_cg.h>
 #  include <deal.II/lac/sparse_matrix.h>
 #  include <deal.II/lac/vector.h>
+
+#  include <deal.II/meshworker/copy_data.h>    // 结构型
+#  include <deal.II/meshworker/scratch_data.h> // 结构型
 
 #  include <deal.II/numerics/data_out.h>
 #  include <deal.II/numerics/matrix_tools.h>
@@ -86,6 +90,29 @@ public:
   void
   parse_string(const std::string &par); // 为了直接从test中嵌入代码,进行相关测试
 
+  /**
+   * 构造assemble_system_one_cell的组装结构
+   */
+
+  using CopyData    = MeshWorker::CopyData<1, 1, 1>;
+  using ScratchData = MeshWorker::ScratchData<dim>;
+
+
+  /**
+   * 增加 函数
+   * assemble_system_one_cell(), copy_one_cell()
+   */
+  void
+  assemble_system_one_cell(
+    const typename DoFHandler<dim>::active_cell_iterator &cell,
+    ScratchData &                                         scratch,
+    CopyData &                                            copy);
+
+  void
+  copy_one_cell(const CopyData &copy);
+
+
+
 protected:
   void
   make_grid();
@@ -95,6 +122,19 @@ protected:
   setup_system();
   void
   assemble_system();
+
+  // /**
+  //  * 增加函数, assemble_system_on_range(), assemble_system_using_ranges()
+  //  */
+  // void
+  // assemble_system_using_ranges();
+
+  // void
+  // assemble_system_on_range(
+  //   const typename DoFHandler<dim>::active_cell_iterator &begin,
+  //   const typename DoFHandler<dim>::active_cell_iterator &end);
+
+
   void
   solve();
   void
@@ -105,6 +145,9 @@ protected:
   void
   output_results(
     const unsigned cycle) const; //输出网格（不同cycle的加密方式的文件名）
+
+  mutable TimerOutput timer; // 可改变，否则与const在一起会出错
+
 
   Triangulation<dim>         triangulation;
   std::unique_ptr<FE_Q<dim>> fe;
@@ -140,6 +183,8 @@ protected:
   unsigned int n_refinements       = 2;         // 网格加密
   unsigned int n_refinement_cycles = 1;         // 误差评估再网格划分
   std::string  output_filename     = "poisson"; // 输出文件名
+  int          number_of_threads   = -1; // 线程数，默认 -1 为多线程
+
 
   std::set<types::boundary_id> dirichlet_ids = {0}; // 边界点的id标签
   std::set<types::boundary_id> neumann_ids;         // 边界点的id标签
