@@ -616,3 +616,10 @@ https://www.dealii.org/current/doxygen/deal.II/structMeshWorker_1_1CopyData.html
 replace the `Threads::split_range` assembly by one based on the use of the
 `WorkStream::run` method, and compare the running times with your original
 code.
+
+7. Document all methods and members of the `Poisson` class, using `Doxygen`
+syntax. Make sure that the GitHub Action `documentation.yaml` is working, and
+generates the documentation of your code automatically. If everything works,
+you should be able to access it as
+`https://username.github.io/sissa-mhpc-lab-07-username/` as soon as as the
+action has completed.

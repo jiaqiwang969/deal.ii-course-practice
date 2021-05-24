@@ -1,15 +1,22 @@
 PoissonTester/std::integral_constant<int, 1 1
 PoissonTester/std::integral_constant<int, 2 1
 PoissonTester/std::integral_constant<int, 3 1
-Poisson2DTester.TestLinear 3 0.209813
-Poisson2DTester.TestQuadratic 3 0.31184
-Poisson2DTester.TestMixedBC1 3 0.308643
-Poisson2DTester.TestLinearWithHangingNodes 3 0.344123
-Poisson2DTester.TestLinearWithHangingNodesUsingPars 3 0.275623
+Poisson2DTester.TestLinear 3 0
+Poisson2DTester.TestQuadratic 3 0
+Poisson2DTester.TestMixedBC1 3 0
+Poisson2DTester.TestLinearWithHangingNodes 3 0
+Poisson2DTester.TestLinearWithHangingNodesUsingPars 3 0
 PoissonTester/std::integral_constant<int, 1 1
 PoissonTester/std::integral_constant<int, 2 1
 PoissonTester/std::integral_constant<int, 3 1
-PoissonTester/std::integral_constant<int, 1>.MakeGrid 1 0.533927
-PoissonTester/std::integral_constant<int, 2>.MakeGrid 1 0.332892
-PoissonTester/std::integral_constant<int, 3>.MakeGrid 1 0.469402
+PoissonTester/std::integral_constant<int, 1 1
+PoissonTester/std::integral_constant<int, 2 1
+PoissonTester/std::integral_constant<int, 3 1
+PoissonTester/std::integral_constant<int, 1 1
+PoissonTester/std::integral_constant<int, 2 1
+PoissonTester/std::integral_constant<int, 3 1
+PoissonTester/std::integral_constant<int, 1>.MakeGrid 1 0.129812
+PoissonTester/std::integral_constant<int, 2>.MakeGrid 1 0.128769
+PoissonTester/std::integral_constant<int, 3>.MakeGrid 1 0.242324
 ---
+Poisson2DTester.TestLinearWithHangingNodesUsingPars

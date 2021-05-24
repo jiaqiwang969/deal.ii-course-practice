@@ -147,6 +147,9 @@ protected:
 
   bool use_direct_solver = true;
 
+  ParameterAcceptorProxy<ReductionControl> solver_control;
+
+
   template <typename Integral>
   friend class PossionTester; //开放测试权限
 };

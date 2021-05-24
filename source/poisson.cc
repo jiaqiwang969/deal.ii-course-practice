@@ -22,6 +22,7 @@
 #include <deal.II/grid/grid_refinement.h> //用于网格加密
 
 #include <deal.II/lac/sparse_direct.h> // 矩阵计算UMFPACK，收敛较快
+#include <deal.II/lac/trilinos_precondition.h> // 预解方程
 
 #include <deal.II/numerics/error_estimator.h> // 误差评估
 
@@ -30,6 +31,8 @@ using namespace dealii;
 template <int dim> // dim模版
 Poisson<dim>::Poisson()
   : dof_handler(triangulation)
+  , solver_control("Solver control", 1000, 1e-12, 1e-12)
+
 {
   // 方式1：将初始化的的自定义参数赋到变量上面
   add_parameter("Finite element degree", fe_degree);
@@ -295,9 +298,16 @@ Poisson<dim>::solve()
     }
   else
     {
-      SolverControl            solver_control(1000, 1e-12);
+      // SolverControl            solver_control(1000, 1e-12); //
+      // 已经移动到Poisson模版开头进行初始化
       SolverCG<Vector<double>> solver(solver_control);
+#ifdef DEAL_II_WITH_TRILINOS // 调用Trilinos预解方程
+      TrilinosWrappers::PreconditionAMG amg;
+      amg.initialize(system_matrix);
+      solver.solve(system_matrix, solution, system_rhs, amg);
+#else
       solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity());
+#endif
     }
   constraints.distribute(solution); // 最后接完需要把限制条件加回去
 }

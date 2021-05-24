@@ -1,3 +1,137 @@
-Start testing: May 24 06:09 UTC
+Start testing: May 24 08:34 UTC
 ----------------------------------------------------------
-End testing: May 24 06:09 UTC
+1/4 Testing: PoissonTester/std::integral_constant<int, 1>.MakeGrid
+1/4 Test: PoissonTester/std::integral_constant<int, 1>.MakeGrid
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=PoissonTester/0.MakeGrid" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"PoissonTester/std::integral_constant<int, 1>.MakeGrid" start time: May 24 08:34 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PoissonTester/0.MakeGrid
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoissonTester/0, where TypeParam = std::integral_constant<int, 1>
+[ RUN      ] PoissonTester/0.MakeGrid
+Working on dim 1
+Number of active cells: 16
+[       OK ] PoissonTester/0.MakeGrid (3 ms)
+[----------] 1 test from PoissonTester/0 (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"PoissonTester/std::integral_constant<int, 1>.MakeGrid" end time: May 24 08:34 UTC
+"PoissonTester/std::integral_constant<int, 1>.MakeGrid" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/4 Testing: PoissonTester/std::integral_constant<int, 2>.MakeGrid
+2/4 Test: PoissonTester/std::integral_constant<int, 2>.MakeGrid
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=PoissonTester/1.MakeGrid" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"PoissonTester/std::integral_constant<int, 2>.MakeGrid" start time: May 24 08:34 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PoissonTester/1.MakeGrid
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoissonTester/1, where TypeParam = std::integral_constant<int, 2>
+[ RUN      ] PoissonTester/1.MakeGrid
+Working on dim 2
+Number of active cells: 256
+[       OK ] PoissonTester/1.MakeGrid (6 ms)
+[----------] 1 test from PoissonTester/1 (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (6 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"PoissonTester/std::integral_constant<int, 2>.MakeGrid" end time: May 24 08:34 UTC
+"PoissonTester/std::integral_constant<int, 2>.MakeGrid" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/4 Testing: PoissonTester/std::integral_constant<int, 3>.MakeGrid
+3/4 Test: PoissonTester/std::integral_constant<int, 3>.MakeGrid
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=PoissonTester/2.MakeGrid" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"PoissonTester/std::integral_constant<int, 3>.MakeGrid" start time: May 24 08:34 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PoissonTester/2.MakeGrid
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoissonTester/2, where TypeParam = std::integral_constant<int, 3>
+[ RUN      ] PoissonTester/2.MakeGrid
+Working on dim 3
+Number of active cells: 4096
+[       OK ] PoissonTester/2.MakeGrid (119 ms)
+[----------] 1 test from PoissonTester/2 (119 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (119 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"PoissonTester/std::integral_constant<int, 3>.MakeGrid" end time: May 24 08:34 UTC
+"PoissonTester/std::integral_constant<int, 3>.MakeGrid" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/4 Testing: Poisson2DTester.TestLinearWithHangingNodesUsingPars
+4/4 Test: Poisson2DTester.TestLinearWithHangingNodesUsingPars
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=Poisson2DTester.TestLinearWithHangingNodesUsingPars" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"Poisson2DTester.TestLinearWithHangingNodesUsingPars" start time: May 24 08:34 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = Poisson2DTester.TestLinearWithHangingNodesUsingPars
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Poisson2DTester
+[ RUN      ] Poisson2DTester.TestLinearWithHangingNodesUsingPars
+
+--------------------------------------------------------
+An error occurred in line <984> of file </build/deal.ii-Annjpe/deal.ii-9.2.0/source/base/parameter_handler.cc> in function
+    std::string dealii::ParameterHandler::get(const string&) const
+The violated condition was: 
+    false
+Additional information: 
+    You can't ask for entry <Max steps> you have not yet declared.
+
+Stacktrace:
+-----------
+#0  /lib/aarch64-linux-gnu/libdeal.ii.g.so.9.2.0: dealii::ParameterHandler::get(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+#1  /lib/aarch64-linux-gnu/libdeal.ii.g.so.9.2.0: dealii::ParameterHandler::get_integer(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+#2  /lib/aarch64-linux-gnu/libdeal.ii.g.so.9.2.0: dealii::SolverControl::parse_parameters(dealii::ParameterHandler&)
+#3  /lib/aarch64-linux-gnu/libdeal.ii.g.so.9.2.0: dealii::ReductionControl::parse_parameters(dealii::ParameterHandler&)
+#4  /workspaces/deal.ii-course-practice/build-container/gtest: dealii::ParameterAcceptorProxy<dealii::ReductionControl>::parse_parameters(dealii::ParameterHandler&)
+#5  /lib/aarch64-linux-gnu/libdeal.ii.g.so.9.2.0: dealii::ParameterAcceptor::parse_all_parameters(dealii::ParameterHandler&)
+#6  /workspaces/deal.ii-course-practice/build-container/libpoisson-lib.so: Poisson<2>::parse_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+#7  /workspaces/deal.ii-course-practice/build-container/gtest: Poisson2DTester_TestLinearWithHangingNodesUsingPars_Test::TestBody()
+#8  /workspaces/deal.ii-course-practice/build-container/gtest: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*)
+#9  /workspaces/deal.ii-course-practice/build-container/gtest: testing::Test::Run()
+#10  /workspaces/deal.ii-course-practice/build-container/gtest: testing::TestInfo::Run()
+#11  /workspaces/deal.ii-course-practice/build-container/gtest: testing::TestSuite::Run()
+#12  /workspaces/deal.ii-course-practice/build-container/gtest: testing::internal::UnitTestImpl::RunAllTests()
+#13  /workspaces/deal.ii-course-practice/build-container/gtest: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*)
+#14  /workspaces/deal.ii-course-practice/build-container/gtest: testing::UnitTest::Run()
+#15  /workspaces/deal.ii-course-practice/build-container/gtest: RUN_ALL_TESTS()
+#16  /workspaces/deal.ii-course-practice/build-container/gtest: main
+--------------------------------------------------------
+
+<end of output>
+Test time =   0.16 sec
+----------------------------------------------------------
+Test Failed.
+"Poisson2DTester.TestLinearWithHangingNodesUsingPars" end time: May 24 08:34 UTC
+"Poisson2DTester.TestLinearWithHangingNodesUsingPars" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 24 08:34 UTC
