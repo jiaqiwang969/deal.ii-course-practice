@@ -10,9 +10,7 @@ DEAL_II_INITIALIZE_CACHED_VARIABLES()
 # Fix warning on mac
 SET(CMAKE_MACOSX_RPATH 1)
 
-# Deal.II example step-4
-ADD_EXECUTABLE(step-4 source/step-4.cc)
-DEAL_II_SETUP_TARGET(step-4)
+
 
 # Executable for the exerciese
 ADD_EXECUTABLE(poisson source/poisson.cc source/main.cc)

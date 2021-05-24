@@ -37,6 +37,7 @@
 #  include <deal.II/grid/grid_generator.h>
 #  include <deal.II/grid/tria.h>
 
+#  include <deal.II/lac/affine_constraints.h> // 存储所有约束, 用于处理挂起的节点
 #  include <deal.II/lac/dynamic_sparsity_pattern.h>
 #  include <deal.II/lac/full_matrix.h>
 #  include <deal.II/lac/precondition.h>
@@ -52,9 +53,8 @@
 #  include <iostream>
 
 // Forward declare the tester class
-class PoissonTester1D;
-class PoissonTester2D;
-class PoissonTester3D;
+template <typename Integral>
+class PoissonTester;
 
 using namespace dealii;
 
@@ -69,6 +69,9 @@ public:
 
   void
   initialize(const std::string &filename);
+
+  void
+  parse_string(const std::string &par); // 为了直接从test中嵌入代码,进行相关测试
 
 protected:
   void
@@ -88,31 +91,37 @@ protected:
   Triangulation<dim>         triangulation;
   std::unique_ptr<FE_Q<dim>> fe;
   DoFHandler<dim>            dof_handler;
-  SparsityPattern            sparsity_pattern;
-  SparseMatrix<double>       system_matrix;
-  Vector<double>             solution;
-  Vector<double>             system_rhs;
+  AffineConstraints<double> constraints; // 存储所有约束, 用于处理挂起的节点
+  SparsityPattern      sparsity_pattern;
+  SparseMatrix<double> system_matrix;
+  Vector<double>       solution;
+  Vector<double>       system_rhs;
 
-  FunctionParser<dim> forcing_term; // parameter 传呼
-  FunctionParser<dim> boundary_condition;
+  FunctionParser<dim> forcing_term;                 // parameter 传呼
+  FunctionParser<dim> dirichlet_boundary_condition; // 增加自定义边界条件
+  FunctionParser<dim> neumann_boundary_condition; // （需要通过积分实现）
+
 
   unsigned int fe_degree           = 1;         // 默认初始参数， 1阶fe
   unsigned int n_refinements       = 4;         // 网格加密
   unsigned int n_refinement_cycles = 1;         // 误差评估再网格划分
   std::string  output_filename     = "poisson"; // 输出文件名
 
-  std::string forcing_term_expression        = "1"; // 外力的表达式
-  std::string boundary_conditions_expression = "0"; // 自定义边界条件
-  std::map<std::string, double> constants;          // 恒定变量参数表
+  std::set<types::boundary_id> dirichlet_ids = {0}; // 边界点的id标签
+  std::set<types::boundary_id> neumann_ids;         // 边界点的id标签
 
-  std::string grid_generator_function  = "hyper_cube"; // 通用形状
-  std::string grid_generator_arguments = "0:1:false";  // 边界序列
+  std::string forcing_term_expression = "1"; // 外力的表达式
+  std::string dirichlet_boundary_conditions_expression = "0"; // 边界1的表达式
+  std::string neumann_boundary_conditions_expression = "0"; // 边界2的表达式
+  std::map<std::string, double> constants; // 恒定变量参数表
+
+  std::string grid_generator_function  = "hyper_cube";  // 通用形状
+  std::string grid_generator_arguments = "0: 1: false"; // 边界序列
 
   ParsedConvergenceTable error_table;
 
-  friend class Poisson1DTester;
-  friend class Poisson2DTester;
-  friend class Poisson3DTester;
+  template <typename Integral>
+  friend class PossionTester; //开放测试权限
 };
 
 #endif
