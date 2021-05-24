@@ -26,6 +26,7 @@ subsection Poisson<2>
   set Neumann boundary ids                      = 
   set Number of global refinements              = 2
   set Number of refinement cycles               = 1
+  set Number of threads                         = -1
   set Output filename                           = poisson
   set Problem constants                         = 
   set Use direct solver                         = true
