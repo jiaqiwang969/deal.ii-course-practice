@@ -32,11 +32,16 @@ Poisson<dim>::Poisson()
   add_parameter("Forcing term expression", forcing_term_expression);
   add_parameter("Dirichlet boundary condition expression",
                 dirichlet_boundary_conditions_expression);
+  add_parameter("Coefficient expression", coefficient_expression);
+  add_parameter("Exact solution expression", exact_solution_expression);
   add_parameter("Neumann boundary condition expression",
                 neumann_boundary_conditions_expression);
 
   add_parameter("Dirichlet boundary ids", dirichlet_ids);
   add_parameter("Neumann boundary ids", neumann_ids);
+
+  add_parameter("Local pre-refinement grid size expression",
+                pre_refinement_expression);
 
   add_parameter("Problem constants", constants);
   add_parameter("Grid generator function", grid_generator_function);
@@ -53,7 +58,10 @@ template <int dim> // dim模版
 void
 Poisson<dim>::initialize(const std::string &filename)
 {
-  ParameterAcceptor::initialize(filename);
+  ParameterAcceptor::initialize(
+    filename,
+    "last_used_parameters.prm",
+    ParameterHandler::Short); // 保留上一次的prm文件，作为参考
 }
 
 template <int dim>
@@ -71,10 +79,23 @@ template <int dim> // dim模版
 void
 Poisson<dim>::make_grid()
 {
+  const auto vars = dim == 1 ? "x" : dim == 2 ? "x,y" : "x,y,z";
+  pre_refinement.initialize(vars,
+                            pre_refinement_expression,
+                            constants); // 初始化导入自定义表达式的参数
   GridGenerator::generate_from_name_and_arguments(triangulation,
                                                   grid_generator_function,
                                                   grid_generator_arguments);
-  triangulation.refine_global(n_refinements);
+  triangulation.refine_global(n_refinements); // n_refinements 初始加密
+
+  for (unsigned int i = 0; i < n_refinements; ++i)
+    {
+      for (const auto &cell : triangulation.active_cell_iterators())
+        if (pre_refinement.value(cell->center()) < cell->diameter())
+          cell->set_refine_flag();
+      triangulation.execute_coarsening_and_refinement();
+    }
+
   std::cout << "Number of active cells: " << triangulation.n_active_cells()
             << std::endl;
 }
@@ -95,19 +116,26 @@ Poisson<dim>::setup_system() // 需要增加hangding node 的处理（ppt 11）
   if (!fe)
     {
       fe = std::make_unique<FE_Q<dim>>(fe_degree); // fe 智能指针
-      forcing_term.initialize(dim == 1 ? "x" : dim == 2 ? "x,y" : "x,y,z",
-                              forcing_term_expression,
-                              constants);
+      const auto vars = dim == 1 ? "x" : dim == 2 ? "x,y" : "x,y,z";
 
-      dirichlet_boundary_condition.initialize( //边界条件初始化赋值
-        dim == 1 ? "x" : dim == 2 ? "x,y" : "x,y,z",
+      forcing_term.initialize(vars,
+                              forcing_term_expression,
+                              constants); // 初始化导入自定义表达式的参数
+      coefficient.initialize(vars,
+                             coefficient_expression,
+                             constants); // 初始化导入自定义表达式的参数
+      exact_solution.initialize(vars,
+                                exact_solution_expression,
+                                constants); // 初始化导入自定义表达式的参数
+      dirichlet_boundary_condition.initialize(
+        vars,
         dirichlet_boundary_conditions_expression,
-        constants);
+        constants); // 初始化导入自定义表达式的参数
 
       neumann_boundary_condition.initialize(
-        dim == 1 ? "x" : dim == 2 ? "x,y" : "x,y,z",
+        vars,
         neumann_boundary_conditions_expression,
-        constants);
+        constants); // 初始化导入自定义表达式的参数
     }
 
   dof_handler.distribute_dofs(*fe);

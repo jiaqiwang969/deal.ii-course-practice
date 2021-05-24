@@ -43,7 +43,7 @@ TEST_F(Poisson2DTester, TestLinear)
       << std::endl
       << "  set Neumann boundary condition expression   = 0" << std::endl
       << "  set Neumann boundary ids                    = " << std::endl
-      << "  set Number of global refinements            = 4" << std::endl
+      << "  set Number of global refinements            = 2" << std::endl
       << "  set Number of refinement cycles             = 1" << std::endl
       << "  set Output filename                         = poisson" << std::endl
       << "  set Problem constants                       = pi:3.14" << std::endl
@@ -79,7 +79,7 @@ TEST_F(Poisson2DTester, TestQuadratic)
       << std::endl
       << "  set Neumann boundary condition expression   = 0" << std::endl
       << "  set Neumann boundary ids                    = " << std::endl
-      << "  set Number of global refinements            = 4" << std::endl
+      << "  set Number of global refinements            = 2" << std::endl
       << "  set Number of refinement cycles             = 1" << std::endl
       << "  set Output filename                         = quadratic"
       << std::endl
@@ -117,7 +117,7 @@ TEST_F(Poisson2DTester, TestMixedBC1)
       << std::endl
       << "  set Neumann boundary condition expression   = 0" << std::endl
       << "  set Neumann boundary ids                    = 0" << std::endl
-      << "  set Number of global refinements            = 4" << std::endl
+      << "  set Number of global refinements            = 2" << std::endl
       << "  set Number of refinement cycles             = 1" << std::endl
       << "  set Output filename                         = quadratic"
       << std::endl
@@ -156,8 +156,8 @@ TEST_F(Poisson2DTester, TestLinearWithHangingNodes)
       << std::endl
       << "  set Neumann boundary condition expression   = 0" << std::endl
       << "  set Neumann boundary ids                    = " << std::endl
-      << "  set Number of global refinements            = 4" << std::endl
-      << "  set Number of refinement cycles             = 2" << std::endl
+      << "  set Number of global refinements            = 2" << std::endl
+      << "  set Number of refinement cycles             = 1" << std::endl
       << "  set Output filename                         = lin_with_handing"
       << std::endl
       << "  set Problem constants                       = pi:3.14" << std::endl
@@ -185,4 +185,49 @@ TEST_F(Poisson2DTester, TestLinearWithHangingNodes)
   tmp -= solution;
 
   ASSERT_NEAR(tmp.l2_norm(), 0, 1e-10);
+}
+
+
+
+// 提前自定义加密测试
+TEST_F(Poisson2DTester, TestLinearWithHangingNodesUsingPars)
+{
+  std::stringstream str;
+
+  str << "subsection Poisson<2>" << std::endl
+      << "  set Dirichlet boundary condition expression = x" << std::endl
+      << "  set Exact solution expression = x" << std::endl
+      << "  set Dirichlet boundary ids                  = 0" << std::endl
+      << "  set Finite element degree                   = 1" << std::endl
+      << "  set Forcing term expression                 = 0" << std::endl
+      << "  set Grid generator arguments                = 0: 1: false"
+      << std::endl
+      << "  set Grid generator function                 = hyper_cube"
+      << std::endl
+      << "  set Neumann boundary condition expression   = 0" << std::endl
+      << "  set Neumann boundary ids                    = " << std::endl
+      << "  set Number of global refinements            = 2" << std::endl
+      << "  set Number of refinement cycles             = 1" << std::endl
+      << "  set Output filename                         = lin_with_handing_par"
+      << std::endl
+      << "  set Problem constants                       = pi:3.14" << std::endl
+      << "  set Local pre-refinement grid size expression = .1*x+.5*y"
+      << std::endl
+      << "end" << std::endl;
+
+  parse_string(str.str());
+  make_grid();
+  setup_system();
+  assemble_system();
+  solve();
+  output_results(0);
+
+  auto tmp = solution;
+  VectorTools::interpolate(dof_handler, dirichlet_boundary_condition, tmp);
+
+  tmp -= solution;
+
+  ASSERT_NEAR(tmp.l2_norm(), 0, 1e-10);
+  // We know how many cells should be refined here. Check them.
+  ASSERT_EQ(triangulation.n_active_cells(), 97u);
 }

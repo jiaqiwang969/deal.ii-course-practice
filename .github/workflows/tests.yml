@@ -19,4 +19,4 @@ jobs:
          .scripts/dr.sh "mkdir build_linux_debug; cd build_linux_debug; cmake .. -GNinja -DCMAKE_BUILD_TYPE=Debug; ninja"
     - name: GTest debug
       run: |
-         .scripts/dr.sh "cd build_linux_debug; ./gtest"
+         .scripts/dr.sh "cd build_linux_debug; ctest -N; ctest --output-on-failure"

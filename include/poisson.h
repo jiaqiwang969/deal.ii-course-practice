@@ -97,22 +97,31 @@ protected:
   Vector<double>       solution;
   Vector<double>       system_rhs;
 
-  FunctionParser<dim> forcing_term;                 // parameter 传呼
+  FunctionParser<dim> forcing_term; // parameter 传呼
+  FunctionParser<dim> coefficient;
+  FunctionParser<dim> exact_solution;
+
   FunctionParser<dim> dirichlet_boundary_condition; // 增加自定义边界条件
   FunctionParser<dim> neumann_boundary_condition; // （需要通过积分实现）
+  FunctionParser<dim> pre_refinement; // 根据自定义函数提前进行网格加密
+
 
 
   unsigned int fe_degree           = 1;         // 默认初始参数， 1阶fe
-  unsigned int n_refinements       = 4;         // 网格加密
+  unsigned int n_refinements       = 2;         // 网格加密
   unsigned int n_refinement_cycles = 1;         // 误差评估再网格划分
   std::string  output_filename     = "poisson"; // 输出文件名
 
   std::set<types::boundary_id> dirichlet_ids = {0}; // 边界点的id标签
   std::set<types::boundary_id> neumann_ids;         // 边界点的id标签
 
-  std::string forcing_term_expression = "1"; // 外力的表达式
+  std::string forcing_term_expression   = "1"; // 外力的表达式
+  std::string coefficient_expression    = "1";
+  std::string exact_solution_expression = "0";
   std::string dirichlet_boundary_conditions_expression = "0"; // 边界1的表达式
   std::string neumann_boundary_conditions_expression = "0"; // 边界2的表达式
+  std::string pre_refinement_expression = "0"; // 根据自定义函数提前进行网格加密
+
   std::map<std::string, double> constants; // 恒定变量参数表
 
   std::string grid_generator_function  = "hyper_cube";  // 通用形状

@@ -1,3 +1,227 @@
-Start testing: May 23 17:14 UTC
+Start testing: May 24 06:07 UTC
 ----------------------------------------------------------
-End testing: May 23 17:14 UTC
+1/8 Testing: PoissonTester/std::integral_constant<int, 1>.MakeGrid
+1/8 Test: PoissonTester/std::integral_constant<int, 1>.MakeGrid
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=PoissonTester/0.MakeGrid" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"PoissonTester/std::integral_constant<int, 1>.MakeGrid" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PoissonTester/0.MakeGrid
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoissonTester/0, where TypeParam = std::integral_constant<int, 1>
+[ RUN      ] PoissonTester/0.MakeGrid
+Working on dim 1
+Number of active cells: 16
+[       OK ] PoissonTester/0.MakeGrid (6 ms)
+[----------] 1 test from PoissonTester/0 (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (6 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"PoissonTester/std::integral_constant<int, 1>.MakeGrid" end time: May 24 06:07 UTC
+"PoissonTester/std::integral_constant<int, 1>.MakeGrid" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/8 Testing: PoissonTester/std::integral_constant<int, 2>.MakeGrid
+2/8 Test: PoissonTester/std::integral_constant<int, 2>.MakeGrid
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=PoissonTester/1.MakeGrid" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"PoissonTester/std::integral_constant<int, 2>.MakeGrid" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PoissonTester/1.MakeGrid
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoissonTester/1, where TypeParam = std::integral_constant<int, 2>
+[ RUN      ] PoissonTester/1.MakeGrid
+Working on dim 2
+Number of active cells: 256
+[       OK ] PoissonTester/1.MakeGrid (8 ms)
+[----------] 1 test from PoissonTester/1 (8 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (8 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.15 sec
+----------------------------------------------------------
+Test Passed.
+"PoissonTester/std::integral_constant<int, 2>.MakeGrid" end time: May 24 06:07 UTC
+"PoissonTester/std::integral_constant<int, 2>.MakeGrid" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/8 Testing: PoissonTester/std::integral_constant<int, 3>.MakeGrid
+3/8 Test: PoissonTester/std::integral_constant<int, 3>.MakeGrid
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=PoissonTester/2.MakeGrid" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"PoissonTester/std::integral_constant<int, 3>.MakeGrid" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = PoissonTester/2.MakeGrid
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PoissonTester/2, where TypeParam = std::integral_constant<int, 3>
+[ RUN      ] PoissonTester/2.MakeGrid
+Working on dim 3
+Number of active cells: 4096
+[       OK ] PoissonTester/2.MakeGrid (120 ms)
+[----------] 1 test from PoissonTester/2 (120 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (120 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"PoissonTester/std::integral_constant<int, 3>.MakeGrid" end time: May 24 06:07 UTC
+"PoissonTester/std::integral_constant<int, 3>.MakeGrid" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/8 Testing: Poisson2DTester.TestLinear
+4/8 Test: Poisson2DTester.TestLinear
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=Poisson2DTester.TestLinear" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"Poisson2DTester.TestLinear" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = Poisson2DTester.TestLinear
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Poisson2DTester
+[ RUN      ] Poisson2DTester.TestLinear
+Number of active cells: 256
+Number of degrees of freedom: 289
+[       OK ] Poisson2DTester.TestLinear (24 ms)
+[----------] 1 test from Poisson2DTester (24 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (24 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.15 sec
+----------------------------------------------------------
+Test Passed.
+"Poisson2DTester.TestLinear" end time: May 24 06:07 UTC
+"Poisson2DTester.TestLinear" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/8 Testing: Poisson2DTester.TestQuadratic
+5/8 Test: Poisson2DTester.TestQuadratic
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=Poisson2DTester.TestQuadratic" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"Poisson2DTester.TestQuadratic" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = Poisson2DTester.TestQuadratic
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Poisson2DTester
+[ RUN      ] Poisson2DTester.TestQuadratic
+Number of active cells: 256
+Number of degrees of freedom: 1089
+[       OK ] Poisson2DTester.TestQuadratic (50 ms)
+[----------] 1 test from Poisson2DTester (50 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (50 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"Poisson2DTester.TestQuadratic" end time: May 24 06:07 UTC
+"Poisson2DTester.TestQuadratic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/8 Testing: Poisson2DTester.TestMixedBC1
+6/8 Test: Poisson2DTester.TestMixedBC1
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=Poisson2DTester.TestMixedBC1" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"Poisson2DTester.TestMixedBC1" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = Poisson2DTester.TestMixedBC1
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Poisson2DTester
+[ RUN      ] Poisson2DTester.TestMixedBC1
+Number of active cells: 256
+Number of degrees of freedom: 1089
+[       OK ] Poisson2DTester.TestMixedBC1 (57 ms)
+[----------] 1 test from Poisson2DTester (57 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (57 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"Poisson2DTester.TestMixedBC1" end time: May 24 06:07 UTC
+"Poisson2DTester.TestMixedBC1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/8 Testing: Poisson2DTester.TestLinearWithHangingNodes
+7/8 Test: Poisson2DTester.TestLinearWithHangingNodes
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=Poisson2DTester.TestLinearWithHangingNodes" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"Poisson2DTester.TestLinearWithHangingNodes" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = Poisson2DTester.TestLinearWithHangingNodes
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Poisson2DTester
+[ RUN      ] Poisson2DTester.TestLinearWithHangingNodes
+Number of active cells: 256
+Number of degrees of freedom: 1128
+[       OK ] Poisson2DTester.TestLinearWithHangingNodes (109 ms)
+[----------] 1 test from Poisson2DTester (109 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (109 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"Poisson2DTester.TestLinearWithHangingNodes" end time: May 24 06:07 UTC
+"Poisson2DTester.TestLinearWithHangingNodes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/8 Testing: Poisson2DTester.TestLinearWithHangingNodesUsingPars
+8/8 Test: Poisson2DTester.TestLinearWithHangingNodesUsingPars
+Command: "/workspaces/deal.ii-course-practice/build-container/gtest" "--gtest_filter=Poisson2DTester.TestLinearWithHangingNodesUsingPars" "--gtest_also_run_disabled_tests"
+Directory: /workspaces/deal.ii-course-practice/build-container
+"Poisson2DTester.TestLinearWithHangingNodesUsingPars" start time: May 24 06:07 UTC
+Output:
+----------------------------------------------------------
+Note: Google Test filter = Poisson2DTester.TestLinearWithHangingNodesUsingPars
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Poisson2DTester
+[ RUN      ] Poisson2DTester.TestLinearWithHangingNodesUsingPars
+Number of active cells: 97
+Number of degrees of freedom: 124
+[       OK ] Poisson2DTester.TestLinearWithHangingNodesUsingPars (16 ms)
+[----------] 1 test from Poisson2DTester (16 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (16 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"Poisson2DTester.TestLinearWithHangingNodesUsingPars" end time: May 24 06:07 UTC
+"Poisson2DTester.TestLinearWithHangingNodesUsingPars" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 24 06:07 UTC
