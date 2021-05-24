@@ -31,13 +31,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 18,
+				"line" : 16,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 19,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
@@ -61,7 +61,7 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 33,
+				"line" : 31,
 				"parent" : 0
 			},
 			{
@@ -287,7 +287,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-rdynamic  -rdynamic -fuse-ld=gold -Wl,-Bsymbolic-functions -Wl,-z,relro -pthread -pthread -ggdb",
+				"fragment" : "-rdynamic -fuse-ld=gold -Wl,-Bsymbolic-functions -Wl,-z,relro -pthread -pthread -ggdb",
 				"role" : "flags"
 			},
 			{
@@ -300,19 +300,19 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_iostreams",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_iostreams.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_serialization",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_serialization.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_system",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_system.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_thread",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_thread.so",
 				"role" : "libraries"
 			},
 			{
@@ -320,423 +320,423 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_regex",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_regex.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_chrono",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_chrono.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_date_time",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_date_time.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lboost_atomic",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libboost_atomic.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_pike-blackbox",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_pike-blackbox.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_trilinoscouplings",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_trilinoscouplings.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_piro",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_piro.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_rol",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_rol.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stokhos_muelu",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stokhos_muelu.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stokhos_ifpack2",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stokhos_ifpack2.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stokhos_amesos2",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stokhos_amesos2.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stokhos_tpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stokhos_tpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stokhos_sacado",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stokhos_sacado.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stokhos",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stokhos.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_rythmos",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_rythmos.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_shylu_ddcommon",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_shylu_ddcommon.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_shylu_ddfrosch",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_shylu_ddfrosch.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_muelu-adapters",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_muelu-adapters.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_muelu-interface",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_muelu-interface.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_muelu",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_muelu.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_moertel",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_moertel.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_locathyra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_locathyra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_locaepetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_locaepetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_localapack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_localapack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_loca",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_loca.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_noxepetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_noxepetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_noxlapack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_noxlapack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_nox",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_nox.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_phalanx",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_phalanx.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_intrepid2",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_intrepid2.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_intrepid",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_intrepid.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teko",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teko.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stratimikos",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stratimikos.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stratimikosbelos",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stratimikosbelos.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stratimikosamesos2",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stratimikosamesos2.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stratimikosaztecoo",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stratimikosaztecoo.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stratimikosamesos",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stratimikosamesos.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stratimikosml",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stratimikosml.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_stratimikosifpack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_stratimikosifpack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_ifpack2-adapters",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_ifpack2-adapters.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_ifpack2",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_ifpack2.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_anasazitpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_anasazitpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_ModeLaplace",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_ModeLaplace.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_anasaziepetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_anasaziepetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_anasazi",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_anasazi.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_komplex",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_komplex.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_amesos2",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_amesos2.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_shylu_nodetacho",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_shylu_nodetacho.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_shylu_nodehts",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_shylu_nodehts.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_belosxpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_belosxpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_belostpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_belostpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_belosepetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_belosepetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_belos",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_belos.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_ml",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_ml.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_ifpack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_ifpack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_zoltan2",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_zoltan2.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_pamgen_extras",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_pamgen_extras.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_pamgen",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_pamgen.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_amesos",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_amesos.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_galeri-xpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_galeri-xpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_galeri-epetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_galeri-epetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_aztecoo",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_aztecoo.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_dpliris",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_dpliris.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_isorropia",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_isorropia.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_optipack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_optipack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_xpetra-sup",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_xpetra-sup.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_xpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_xpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_thyratpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_thyratpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_thyraepetraext",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_thyraepetraext.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_thyraepetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_thyraepetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_thyracore",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_thyracore.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_epetraext",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_epetraext.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_trilinosss",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_trilinosss.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_tpetraext",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_tpetraext.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_tpetrainout",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_tpetrainout.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_tpetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_tpetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_kokkostsqr",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_kokkostsqr.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_tpetraclassiclinalg",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_tpetraclassiclinalg.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_tpetraclassicnodeapi",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_tpetraclassicnodeapi.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_tpetraclassic",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_tpetraclassic.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_triutils",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_triutils.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_globipack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_globipack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_shards",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_shards.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_zoltan",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_zoltan.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_epetra",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_epetra.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_sacado",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_sacado.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_rtop",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_rtop.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_kokkoskernels",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_kokkoskernels.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchoskokkoscomm",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchoskokkoscomm.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchoskokkoscompat",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchoskokkoscompat.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchosremainder",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchosremainder.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchosnumerics",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchosnumerics.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchoscomm",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchoscomm.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchosparameterlist",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchosparameterlist.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchosparser",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchosparser.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_teuchoscore",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_teuchoscore.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_kokkosalgorithms",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_kokkosalgorithms.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_kokkoscontainers",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_kokkoscontainers.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltrilinos_kokkoscore",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtrilinos_kokkoscore.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsmumps",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsmumps.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ldmumps",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libdmumps.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lcmumps",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libcmumps.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lzmumps",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libzmumps.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lpord",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libpord.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lmumps_common",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libmumps_common.so",
 				"role" : "libraries"
 			},
 			{
@@ -744,27 +744,27 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ltbb",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libtbb.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lz",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libz.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lptscotch",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libptscotch.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lptscotcherr",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libptscotcherr.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lscotch",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libscotch.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lscotcherr",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libscotcherr.so",
 				"role" : "libraries"
 			},
 			{
@@ -780,35 +780,35 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lumfpack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libumfpack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lcholmod",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libcholmod.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lccolamd",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libccolamd.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lcolamd",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libcolamd.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lcamd",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libcamd.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsuitesparseconfig",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsuitesparseconfig.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lamd",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libamd.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lmetis",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libmetis.so",
 				"role" : "libraries"
 			},
 			{
@@ -816,23 +816,23 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lparpack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libparpack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-larpack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libarpack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lassimp",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libassimp.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lgsl",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libgsl.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lgslcblas",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libgslcblas.so",
 				"role" : "libraries"
 			},
 			{
@@ -844,131 +844,131 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lmuparser",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libmuparser.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lnetcdf_c++",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libnetcdf_c++.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lnetcdf",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libnetcdf.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKBO",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKBO.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKBool",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKBool.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKBRep",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKBRep.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKernel",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKernel.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKFeat",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKFeat.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKFillet",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKFillet.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKG2d",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKG2d.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKG3d",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKG3d.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKGeomAlgo",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKGeomAlgo.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKGeomBase",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKGeomBase.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKHLR",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKHLR.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKIGES",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKIGES.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKMath",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKMath.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKMesh",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKMesh.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKOffset",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKOffset.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKPrim",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKPrim.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKShHealing",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKShHealing.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKSTEP",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKSTEP.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKSTEPAttr",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKSTEPAttr.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKSTEPBase",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKSTEPBase.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKSTEP209",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKSTEP209.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKSTL",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKSTL.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKTopAlgo",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKTopAlgo.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lTKXSBase",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libTKXSBase.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lp4est",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libp4est.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsc",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsc.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lscalapack-openmpi",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libscalapack-openmpi.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-llapack",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/liblapack.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lblas",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libblas.so",
 				"role" : "libraries"
 			},
 			{
@@ -1008,31 +1008,31 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lslepc",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libslepc.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lpetsc",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libpetsc.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsundials_idas",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsundials_idas.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsundials_arkode",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsundials_arkode.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsundials_kinsol",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsundials_kinsol.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsundials_nvecserial",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsundials_nvecserial.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lsundials_nvecparallel",
+				"fragment" : "/usr/lib/aarch64-linux-gnu/libsundials_nvecparallel.so",
 				"role" : "libraries"
 			}
 		],

@@ -4,4 +4,3 @@
 /workspaces/deal.ii-course-practice/build-container/CMakeFiles/gtest.dir
 /workspaces/deal.ii-course-practice/build-container/CMakeFiles/poisson-lib.dir
 /workspaces/deal.ii-course-practice/build-container/CMakeFiles/poisson.dir
-/workspaces/deal.ii-course-practice/build-container/CMakeFiles/step-4.dir
