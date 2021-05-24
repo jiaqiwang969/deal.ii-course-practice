@@ -19,6 +19,8 @@
  */
 #include "poisson.h"
 
+#include <deal.II/base/multithread_info.h>
+
 #include <deal.II/grid/grid_refinement.h> //用于网格加密
 
 #include <deal.II/lac/sparse_direct.h> // 矩阵计算UMFPACK，收敛较快
@@ -478,11 +480,22 @@ Poisson<dim>::output_results(const unsigned cycle) const
   data_out.write_vtu(output); //输出vtu格式
 }
 
+template <int dim>
+void
+Poisson<dim>::print_system_info()
+{
+  std::cout << "Number of cores  : " << MultithreadInfo::n_cores() << std::endl
+            << "Number of threads: " << MultithreadInfo::n_threads()
+            << std::endl;
+}
+
+
 
 template <int dim> // dim模版
 void
 Poisson<dim>::run()
 {
+  print_system_info(); // 输出并行的计算机参数
   make_grid();
   for (unsigned int cycle = 0; cycle < n_refinement_cycles; ++cycle)
     {
