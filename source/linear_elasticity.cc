@@ -42,8 +42,8 @@ template <int dim>
 LinearElasticity<dim>::LinearElasticity()
   : mpi_communicator(MPI_COMM_WORLD)
   , pcout(std::cout, (Utilities::MPI::this_mpi_process(mpi_communicator) == 0))
-  , timer(pcout, TimerOutput::summary, TimerOutput::cpu_and_wall_times)
   , n_components(dim)
+  , timer(pcout, TimerOutput::summary, TimerOutput::cpu_and_wall_times)
   , triangulation(mpi_communicator,
                   typename Triangulation<dim>::MeshSmoothing(
                     Triangulation<dim>::smoothing_on_refinement |
@@ -178,7 +178,8 @@ LinearElasticity<dim>::setup_system()
   TimerOutput::Scope timer_section(timer, "setup_system");
   if (!fe)
     {
-      fe              = FETools::get_fe_by_name<dim>(fe_name);
+      // fe              = std::make_unique<FE_Q<dim>>(fe_degree);
+      fe              = FETools ::get_fe_by_name<dim>(fe_name);
       mapping         = std::make_unique<MappingQGeneric<dim>>(mapping_degree);
       const auto vars = dim == 1 ? "x" : dim == 2 ? "x,y" : "x,y,z";
       forcing_term.initialize(vars, forcing_term_expression, constants);
@@ -259,14 +260,13 @@ LinearElasticity<dim>::assemble_system_one_cell(
           const auto eps_v = fe_values[velocity].symmetric_gradient(
             i, q_index); // SymmetricTensor<2,dim>
           const auto div_v =
-            fe_values[velocity].divergence(i, q_index); // double
+            fe_values[velocity].divergence(i, q_index); // double scalar
 
           for (const unsigned int j : fe_values.dof_indices())
             {
-              const auto eps_u = fe_values[velocity].symmetric_gradient(
-                j, q_index); // SymmetricTensor<2,dim>
-              const auto div_u =
-                fe_values[velocity].divergence(j, q_index); // double
+              const auto eps_u =
+                fe_values[velocity].symmetric_gradient(j, q_index);
+              const auto div_u = fe_values[velocity].divergence(j, q_index);
 
               cell_matrix(i, j) +=
                 (mu * scalar_product(eps_v, eps_u) + lambda * div_u * div_v) *

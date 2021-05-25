@@ -1,10 +1,27 @@
 #include <deal.II/base/utilities.h>
 
-#include "base_problem.h"      // lab10-增加基本问题
-#include "linear_elasticity.h" //  lab10-增加线性变形问题
+#include "linear_elasticity.h"
 #include "poisson.h"
 
-
+/**
+ * \mainpage Adaptive FEM for LinearElasticity problem
+ *
+ * This is the starting code for laboratory number 7 of the course "Theory and
+ * Practice of Finite Element methods".
+ *
+ * We solve the LinearElasticity problem
+ *
+ * \[
+ * \begin{split}
+ * -\Delta u &= f \quad \text{ in } \Omega\\
+ * n\cdot \nabla u &= g_N \quad \text{ on } \partial\Omega_N\\
+ *  u &= g_D \quad \text{ on } \partial\Omega_D
+ * \end{split}
+ * \]
+ *
+ * on convex and Lipschitz domains $\Omega$, using the Finite Element method,
+ * and the deal.II library (www.dealii.org).
+ */
 int
 main(int argc, char **argv)
 {
@@ -22,10 +39,9 @@ main(int argc, char **argv)
       else
         deallog.depth_console(0);
 
-
-      BaseProblem<2> base_problem;
-      base_problem.initialize(par_name);
-      base_problem.run();
+      LinearElasticity<2> linear_elasticity_problem;
+      linear_elasticity_problem.initialize(par_name);
+      linear_elasticity_problem.run();
     }
   catch (std::exception &exc)
     {
