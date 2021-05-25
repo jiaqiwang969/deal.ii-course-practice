@@ -1,8 +1,9 @@
 # deal.ii-course-practice
 这是个人的课后练习，是对Theory and Practice of Finite Element Methods这门课程的巩固和强化。 
-- 课程链接<https://www.youtube.com/playlist?list=PLcvf2raG3YsHis9dJfQ-anJgR1b7xGum3> 
-- 课程导师 Luca Heltai  <luca.heltai@sissa.it>
+- 课程链接: <https://www.youtube.com/playlist?list=PLcvf2raG3YsHis9dJfQ-anJgR1b7xGum3> 
+- 课程导师: Luca Heltai  <luca.heltai@sissa.it>
 - 代码文档: <http://deal-ii.com/deal.ii-course-practice/>
+- git教程: <https://learngitbranching.js.org/?locale=zh_CN>
 
 
 
@@ -414,3 +415,39 @@ TEST_F(PoissonTester, Exercise3) {
 6. 切换到释放模式（``make release``），决定一个全局细化水平，需要30-60秒的时间来解决，用1、2、4、8、12、16个MPI任务研究装配和解决时间。哪一个是最快的，根据你的机器有多少个核心，计时是否有意义？
 
 7. 通过切换到3D和改变几何形状来玩测试问题。你的选择!
+
+
+
+# Lab 09 - 矢量值问题
+
+
+## 说明
+
+对于下面的每一点，用函数来扩展 "Poisson "类，以完成指定的任务。执行指定的任务, 尽量减少你复制和粘贴的代码量. 尽量减少复制和粘贴的代码量，可能的话，通过给现有的函数添加参数来重组现有的代码。函数，并生成类似于 "运行 "方法的封装器（如`run_exercise_3`）。
+
+一旦你创建了一个执行给定任务的函数，将其添加到 `poisson-tester.cc`文件，并确保所有练习都通过 `gtest`可执行程序运行，例如，为每个练习添加一个测试，如下所示 片段。
+
+```C++
+TEST_F(PoissonTester, Exercise3) {
+   run_exercise_3();
+}
+```
+
+在本实验结束时，你将修改你的Poisson代码，以便在多线程上使用共享内存并行化来运行 在多线程上使用共享内存并行化运行，并且对基于任务的并行化有一定了解。你将对基于任务的并行化有一些了解
+
+### Lab-09
+
+1. 将你的 "PoissonProblem "代码转换成 "LinearElasticityProblem "类。创建一个 "PoissonProblem "类的副本，并修改你的副本)
+
+2. 在 "线性弹性问题 "类中添加一个 "n_components=dim "参数。 问题的成员（例如，所有从`dealii::Function`类派生的类）在调试模式下抛出在调试模式下抛出一个断言，如果组件的数量是错误的。
+
+3. 从参数文件中创建有限元空间，使用`FETools::get_fe_by_name`从参数文件中创建有限元空间，并使用断言检查组件的数量是否正确。元素数量是否正确(从参数中删除`fe_degree`)。
+
+4. 将参数`mu`和`lambda`添加到参数文件中，并组装成 问题 `(mu eps u, eps v) + (lambda div u, div v) = (f,v)` 其中`u`和`v`在$H^1_0中。都在$H^1_0(\Omega)^{dim}$中，并且`eps u = 0.5((grad u) + (grad u)^T)`。请确保你将`mu'和`lambda'添加到问题常量图中，这样你就可以在函数和精确的在函数和精确解中使用它们。
+
+5. 确保你的代码的输出是基于矢量的，通过指示`DataOut`输出基于矢量的解决方案。输出一个基于矢量的解决方案。
+
+6. 创建一个公共类 "BaseProblem"，它包含了所有在 "PoissonProblem "中共享的内容。PoissonProblem "和 "LinearElasticity "之间共享的一切，并确保 泊松问题 "和 "线性弹性问题 "都派生自基类。
+确保你在 "基数问题 "中明确初始化了"参数接受器"类。`BaseProblem'中明确初始化，然后在派生类中初始化。
+
+7. 确保你创建了一个 "线性弹性问题测试器"类来测试你的问题。使用gtest测试你的问题，并创建纯剪切和纯压缩/扩张测试案例。案例。

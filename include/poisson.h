@@ -27,7 +27,10 @@
 #  include <deal.II/base/parameter_acceptor.h>
 #  include <deal.II/base/parsed_convergence_table.h>
 #  include <deal.II/base/quadrature_lib.h>
-#  include <deal.II/base/timer.h>
+#  include <deal.II/base/timer.h> // 用于计时
+
+#  include <deal.II/distributed/grid_refinement.h> // 分布式网格加密
+#  include <deal.II/distributed/tria.h>            // 分布式网格
 
 #  include <deal.II/dofs/dof_handler.h>
 #  include <deal.II/dofs/dof_tools.h>
@@ -41,6 +44,7 @@
 #  include <deal.II/lac/affine_constraints.h> // 存储所有约束, 用于处理挂起的节点
 #  include <deal.II/lac/dynamic_sparsity_pattern.h>
 #  include <deal.II/lac/full_matrix.h>
+#  include <deal.II/lac/generic_linear_algebra.h> // 添加于分布式案例
 #  include <deal.II/lac/precondition.h>
 #  include <deal.II/lac/solver_cg.h>
 #  include <deal.II/lac/sparse_matrix.h>
@@ -55,6 +59,27 @@
 
 #  include <fstream>
 #  include <iostream>
+
+
+/**
+ * 选择分布式矩阵计算外接库：PETSC或者TRILINOS
+ */
+#  define FORCE_USE_OF_TRILINOS
+
+namespace LA
+{
+#  if defined(DEAL_II_WITH_PETSC) && !defined(DEAL_II_PETSC_WITH_COMPLEX) && \
+    !(defined(DEAL_II_WITH_TRILINOS) && defined(FORCE_USE_OF_TRILINOS))
+  using namespace dealii::LinearAlgebraPETSc;
+#    define USE_PETSC_LA
+#  elif defined(DEAL_II_WITH_TRILINOS)
+  using namespace dealii::LinearAlgebraTrilinos;
+#  else
+#    error DEAL_II_WITH_PETSC or DEAL_II_WITH_TRILINOS required
+#  endif
+} // namespace LA
+
+
 
 // Forward declare the tester class
 template <typename Integral>
@@ -146,19 +171,34 @@ protected:
   output_results(
     const unsigned cycle) const; //输出网格（不同cycle的加密方式的文件名）
 
+  MPI_Comm mpi_communicator; // 分布式通信类
+
+  ConditionalOStream pcout; // 分布式条件输出（只输出一个端口的信息，比如0端口）
+
   mutable TimerOutput timer; // 可改变，否则与const在一起会出错
 
 
-  Triangulation<dim>         triangulation;
-  std::unique_ptr<FE_Q<dim>> fe;
+  parallel::distributed::Triangulation<dim> triangulation; // 改造成分布式
+  std::unique_ptr<FE_Q<dim>>                fe;
   std::unique_ptr<MappingQGeneric<dim>>
                   mapping; // 原先mapping为默认，后续用于并行
   DoFHandler<dim> dof_handler;
   AffineConstraints<double> constraints; // 存储所有约束, 用于处理挂起的节点
-  SparsityPattern      sparsity_pattern;
-  SparseMatrix<double> system_matrix;
-  Vector<double>       solution;
-  Vector<double>       system_rhs;
+
+  // Only needed changes for MPI
+  IndexSet locally_owned_dofs; // owned：那些分配给特定MPI进程的
+  IndexSet
+    locally_relevant_dofs; // relevant:
+                           // 那些分配给其他处理器的，但被要求对当前进程进行一些操作的程序
+
+  // SparsityPattern      sparsity_pattern;
+  // SparseMatrix<double> system_matrix;
+  // Vector<double>       solution;
+  // Vector<double>       system_rhs;
+  LA::MPI::SparseMatrix system_matrix;             // 分布式
+  LA::MPI::Vector       locally_relevant_solution; // 分布式
+  LA::MPI::Vector       solution;                  // 分布式
+  LA::MPI::Vector       system_rhs;                // 分布式
 
   Vector<float> error_per_cell;           // 单个网格的误差
   std::string   estimator_type = "exact"; // 评估策略，exact|kelly|residual

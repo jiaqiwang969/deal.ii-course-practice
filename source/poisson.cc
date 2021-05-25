@@ -23,6 +23,7 @@
 #include <deal.II/base/thread_management.h> // 线程处理
 #include <deal.II/base/work_stream.h>       // workstream 工厂
 
+#include <deal.II/grid/grid_out.h>        // 增于分布式
 #include <deal.II/grid/grid_refinement.h> //用于网格加密
 
 #include <deal.II/lac/sparse_direct.h> // 矩阵计算UMFPACK，收敛较快
@@ -37,9 +38,18 @@ using namespace dealii;
 
 template <int dim> // dim模版
 Poisson<dim>::Poisson()
-  : timer(std::cout,
+  : mpi_communicator(MPI_COMM_WORLD) // mpi通信初始化
+  , pcout(std::cout,
+          (Utilities::MPI::this_mpi_process(mpi_communicator) ==
+           0)) //计时器只输出pro 0
+  , timer(pcout,
           TimerOutput::summary,
           TimerOutput::cpu_and_wall_times) // 计时器
+  , triangulation(
+      mpi_communicator,
+      typename Triangulation<dim>::MeshSmoothing(
+        Triangulation<dim>::smoothing_on_refinement |
+        Triangulation<dim>::smoothing_on_coarsening)) // 分布式网格初始化
   , dof_handler(triangulation)
   , solver_control("Solver control", 1000, 1e-12, 1e-12)
 
@@ -195,13 +205,21 @@ Poisson<dim>::setup_system() // 需要增加hangding node 的处理（ppt 11）
     }
 
   dof_handler.distribute_dofs(*fe);
-  std::cout << "Number of degrees of freedom: " << dof_handler.n_dofs()
-            << std::endl;
+  locally_owned_dofs =
+    dof_handler.locally_owned_dofs(); // owned：那些分配给特定MPI进程的
+
+  DoFTools::extract_locally_relevant_dofs(
+    dof_handler,
+    locally_relevant_dofs); // relevant，那些分配给其他处理器的，但被要求对当前进程进行一些操作的程序
+  pcout << "Number of degrees of freedom: " << dof_handler.n_dofs()
+        << std::endl;
 
   /**
    * 存储所有约束, 用于处理挂起的节点，见ppt11
    */
   constraints.clear();
+  constraints.reinit(locally_relevant_dofs); // 增于分布式
+
   // create hanging node constrainints
   DoFTools::make_hanging_node_constraints(dof_handler, constraints);
 
@@ -218,11 +236,28 @@ Poisson<dim>::setup_system() // 需要增加hangding node 的处理（ppt 11）
                                   dsp,
                                   constraints,
                                   false); // ture的话可以移除限制
-  // 增加限制后，更新
-  sparsity_pattern.copy_from(dsp);
-  system_matrix.reinit(sparsity_pattern);
-  solution.reinit(dof_handler.n_dofs());
-  system_rhs.reinit(dof_handler.n_dofs());
+                                          // 增加限制后，更新
+                                          // sparsity_pattern.copy_from(dsp);
+  // system_matrix.reinit(sparsity_pattern);
+  // solution.reinit(dof_handler.n_dofs());
+  // system_rhs.reinit(dof_handler.n_dofs());
+
+  // 增于分布式，分布式下对矩阵分配
+  SparsityTools::distribute_sparsity_pattern(dsp,
+                                             locally_owned_dofs,
+                                             mpi_communicator,
+                                             locally_relevant_dofs);
+  system_matrix.reinit(locally_owned_dofs,
+                       locally_owned_dofs,
+                       dsp,
+                       mpi_communicator);
+
+  solution.reinit(locally_owned_dofs, mpi_communicator);
+  system_rhs.reinit(locally_owned_dofs, mpi_communicator);
+
+  locally_relevant_solution.reinit(locally_owned_dofs,
+                                   locally_relevant_dofs,
+                                   mpi_communicator);
   error_per_cell.reinit(triangulation.n_active_cells());
 }
 
@@ -370,14 +405,24 @@ Poisson<dim>::assemble_system()
                         update_JxW_values);
 
   CopyData copy(fe->n_dofs_per_cell());
-
-  WorkStream::run(dof_handler.begin_active(),
-                  dof_handler.end(),
-                  *this,
-                  &Poisson<dim>::assemble_system_one_cell,
-                  &Poisson<dim>::copy_one_cell,
-                  scratch,
-                  copy);
+  // 弃于分布式
+  // WorkStream::run(dof_handler.begin_active(),
+  //                 dof_handler.end(),
+  //                 *this,
+  //                 &Poisson<dim>::assemble_system_one_cell,
+  //                 &Poisson<dim>::copy_one_cell,
+  //                 scratch,
+  //                 copy);
+  // 增于分布式，对owned proc对结构功能化操作
+  for (const auto &cell : dof_handler.active_cell_iterators())
+    if (cell->is_locally_owned())
+      {
+        assemble_system_one_cell(cell, scratch, copy);
+        copy_one_cell(copy);
+      }
+  // 打包owned proc 处理的结果数据
+  system_matrix.compress(VectorOperation::add);
+  system_rhs.compress(VectorOperation::add);
 }
 
 
@@ -387,28 +432,35 @@ Poisson<dim>::solve()
 {
   TimerOutput::Scope timer_section(timer, "solve");
 
-  if (use_direct_solver == true)
-    {
-      SparseDirectUMFPACK
-        system_matrix_inverse; // 用来求解不对称稀疏线性系统软件包,
-                               // Ax = b,使用非对称多波方法
-      system_matrix_inverse.initialize(system_matrix);
-      system_matrix_inverse.vmult(solution, system_rhs);
-    }
-  else
-    {
-      // SolverControl            solver_control(1000, 1e-12); //
-      // 已经移动到Poisson模版开头进行初始化
-      SolverCG<Vector<double>> solver(solver_control);
-#ifdef DEAL_II_WITH_TRILINOS // 调用Trilinos预解方程
-      TrilinosWrappers::PreconditionAMG amg;
-      amg.initialize(system_matrix);
-      solver.solve(system_matrix, solution, system_rhs, amg);
-#else
-      solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity());
-#endif
-    }
+  //   if (use_direct_solver == true)
+  //     {
+  //       SparseDirectUMFPACK
+  //         system_matrix_inverse; // 用来求解不对称稀疏线性系统软件包,
+  //                                // Ax = b,使用非对称多波方法
+  //       system_matrix_inverse.initialize(system_matrix);
+  //       system_matrix_inverse.vmult(solution, system_rhs);
+  //     }
+  //   else
+  //     {
+  //       // SolverControl            solver_control(1000, 1e-12); //
+  //       // 已经移动到Poisson模版开头进行初始化
+  //       SolverCG<Vector<double>> solver(solver_control);
+  // #ifdef DEAL_II_WITH_TRILINOS // 调用Trilinos预解方程
+  //       TrilinosWrappers::PreconditionAMG amg;
+  //       amg.initialize(system_matrix);
+  //       solver.solve(system_matrix, solution, system_rhs, amg);
+  // #else
+  //       solver.solve(system_matrix, solution, system_rhs,
+  //       PreconditionIdentity());
+  // #endif
+  //     }
+  // 增于分布式
+  SolverCG<LA::MPI::Vector> solver(solver_control);
+  LA::MPI::PreconditionAMG  amg;
+  amg.initialize(system_matrix);
+  solver.solve(system_matrix, solution, system_rhs, amg);
   constraints.distribute(solution); // 最后接完需要把限制条件加回去
+  locally_relevant_solution = solution; // 增于分布式 （附近对鬼点赋值？）
 }
 
 
@@ -424,13 +476,14 @@ Poisson<dim>::estimate()
     {
       error_per_cell = 0;
       QGauss<dim> quad(fe->degree + 1);
-      VectorTools::integrate_difference(*mapping,
-                                        dof_handler,
-                                        solution,
-                                        exact_solution,
-                                        error_per_cell,
-                                        quad,
-                                        VectorTools::H1_seminorm);
+      VectorTools::integrate_difference(
+        *mapping,
+        dof_handler,
+        locally_relevant_solution, // 增于分布式，修改前为solution
+        exact_solution,
+        error_per_cell,
+        quad,
+        VectorTools::H1_seminorm);
     }
   else if (estimator_type == "kelly")
     // 参考
@@ -441,14 +494,15 @@ Poisson<dim>::estimate()
         neumann[id] = &neumann_boundary_condition;
 
       QGauss<dim - 1> face_quad(fe->degree + 1);
-      KellyErrorEstimator<dim>::estimate(*mapping,
-                                         dof_handler,
-                                         face_quad,
-                                         neumann,
-                                         solution,
-                                         error_per_cell,
-                                         ComponentMask(),
-                                         &coefficient);
+      KellyErrorEstimator<dim>::estimate(
+        *mapping,
+        dof_handler,
+        face_quad,
+        neumann,
+        locally_relevant_solution, // 增于分布式，修改前为solution
+        error_per_cell,
+        ComponentMask(),
+        &coefficient);
     }
   else if (estimator_type == "residual")
     {
@@ -463,14 +517,15 @@ Poisson<dim>::estimate()
       for (const auto id : neumann_ids)
         neumann[id] = &neumann_boundary_condition;
 
-      KellyErrorEstimator<dim>::estimate(*mapping,
-                                         dof_handler,
-                                         face_quad,
-                                         neumann,
-                                         solution,
-                                         error_per_cell,
-                                         ComponentMask(),
-                                         &coefficient);
+      KellyErrorEstimator<dim>::estimate(
+        *mapping,
+        dof_handler,
+        face_quad,
+        neumann,
+        locally_relevant_solution, // 增于分布式，修改前为solution
+        error_per_cell,
+        ComponentMask(),
+        &coefficient);
 
       FEValues<dim> fe_values(*mapping,
                               *fe,
@@ -488,7 +543,9 @@ Poisson<dim>::estimate()
         {
           fe_values.reinit(cell);
 
-          fe_values.get_function_laplacians(solution, local_laplacians);
+          fe_values.get_function_laplacians(
+            locally_relevant_solution, // 增于分布式，修改前为solution
+            local_laplacians);
           residual_L2_norm = 0;
           for (const auto q_index : fe_values.quadrature_point_indices())
             {
@@ -511,7 +568,11 @@ Poisson<dim>::estimate()
   error_table.add_extra_column("estimator", [global_estimator]() {
     return global_estimator;
   });
-  error_table.error_from_exact(*mapping, dof_handler, solution, exact_solution);
+  error_table.error_from_exact(
+    *mapping,
+    dof_handler,
+    locally_relevant_solution, // 增于分布式，修改前为solution
+    exact_solution);
 }
 
 
@@ -529,19 +590,21 @@ Poisson<dim>::mark()
     }
   else if (marking_strategy == "fixed_fraction")
     {
-      GridRefinement::refine_and_coarsen_fixed_fraction(
-        triangulation,
-        error_per_cell,
-        coarsening_and_refinement_factors.second,
-        coarsening_and_refinement_factors.first);
+      parallel::distributed::GridRefinement::
+        refine_and_coarsen_fixed_fraction( // 改于分布式
+          triangulation,
+          error_per_cell,
+          coarsening_and_refinement_factors.second,
+          coarsening_and_refinement_factors.first);
     }
   else if (marking_strategy == "fixed_number")
     {
-      GridRefinement::refine_and_coarsen_fixed_number(
-        triangulation,
-        error_per_cell,
-        coarsening_and_refinement_factors.second,
-        coarsening_and_refinement_factors.first);
+      parallel::distributed::GridRefinement::
+        refine_and_coarsen_fixed_number( // 改于分布式
+          triangulation,
+          error_per_cell,
+          coarsening_and_refinement_factors.second,
+          coarsening_and_refinement_factors.first);
     }
   else
     {
@@ -564,23 +627,35 @@ Poisson<dim>::output_results(const unsigned cycle) const
   data_out.set_flags(flags);
 
   data_out.attach_dof_handler(dof_handler);
-  data_out.add_data_vector(solution, "solution"); // 输出文件包含的内容
+  data_out.add_data_vector(locally_relevant_solution,
+                           "solution"); // 输出文件包含的内容 //改于分布式
 
-  auto interpolated_exact = solution;
-  VectorTools::interpolate(*mapping,
-                           dof_handler,
-                           exact_solution,
-                           interpolated_exact);
-  data_out.add_data_vector(interpolated_exact, "exact"); // 输出文件包含的内容
+  // auto interpolated_exact = solution;
+  // VectorTools::interpolate(*mapping,
+  //                          dof_handler,
+  //                          exact_solution,
+  //                          interpolated_exact);
+  // data_out.add_data_vector(interpolated_exact, "exact"); //
+  // 输出文件包含的内容
   data_out.add_data_vector(error_per_cell, "estimator"); // 输出文件包含的内容
   data_out.build_patches(*mapping,
                          std::max(mapping_degree, fe_degree),
                          DataOut<dim>::curved_inner_cells);
 
-  std::string fname =
-    output_filename + "_" + std::to_string(cycle) + ".vtu"; // 定义输出的文件名
-  std::ofstream output(fname);
-  data_out.write_vtu(output); //输出vtu格式
+  // std::string fname =
+  //   output_filename + "_" + std::to_string(cycle) + ".vtu"; //
+  //   定义输出的文件名
+  // std::ofstream output(fname);
+  std::string fname = output_filename + "_" + std::to_string(cycle) + ".vtu";
+  data_out.write_vtu_in_parallel(fname, mpi_communicator);
+
+  // data_out.write_vtu(output); //输出vtu格式
+
+  GridOut go;
+  go.write_mesh_per_processor_as_vtu(triangulation,
+                                     "tria_" + std::to_string(cycle),
+                                     false,
+                                     true);
 }
 
 template <int dim>
@@ -618,5 +693,6 @@ Poisson<dim>::run()
           refine_grid(); //然后根据相对误差重新细化网格
         }
     }
-  error_table.output_table(std::cout); // 最后来一个误差总表
+  if (pcout.is_active())
+    error_table.output_table(std::cout); // 最后来一个误差总表
 }
