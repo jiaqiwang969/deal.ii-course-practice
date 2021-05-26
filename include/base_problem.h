@@ -182,7 +182,7 @@ protected:
    *
    * @param copy 在系统矩阵和rhs上分配的本地数据。
    */
-  void
+  virtual void
   copy_one_cell(const CopyData &copy);
 
 
@@ -195,14 +195,14 @@ protected:
   /**
    * 求解全局系统。
    */
-  void
+  virtual void
   solve();
 
 
   /**
    *  进行后验误差估计，并将结果存储在`error_per_cell`向量中。
    */
-  void
+  virtual void
   estimate();
 
 
@@ -222,7 +222,7 @@ protected:
   /**
    *   初始设置：分配自由度，使所有向量和矩阵的大小合适，初始化函数和指针。
    */
-  void
+  virtual void
   setup_system();
 
   /**
@@ -238,7 +238,7 @@ protected:
   /**
    * 实际上是在单元格上循环，并组装全局系统。
    */
-  void
+  virtual void
   assemble_system();
 
 

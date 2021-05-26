@@ -26,8 +26,8 @@ using namespace dealii;
 template <int dim>
 BaseProblem<dim>::BaseProblem(const unsigned int &n_components,
                               const std::string & problem_name)
-  : ParameterAcceptor(problem_name)
-  , n_components(n_components) // 默认 n_components = expressions.size()
+  : ParameterAcceptor(problem_name) // prm文件中 subsection 找到
+  , n_components(n_components)      // 默认 n_components = expressions.size()
   , mpi_communicator(MPI_COMM_WORLD)
   , pcout(std::cout, (Utilities::MPI::this_mpi_process(mpi_communicator) == 0))
   , timer(pcout, TimerOutput::summary, TimerOutput::cpu_and_wall_times)
@@ -209,7 +209,8 @@ BaseProblem<dim>::setup_system()
 
   error_per_cell.reinit(triangulation.n_active_cells());
 
-  // Now call anything that may be needed
+  // Now call anything that may be needed hook
+  // 可以在此基础上添加扩展，而尽量不改变原基类
   setup_system_call_back();
 }
 

@@ -457,7 +457,10 @@ TEST_F(PoissonTester, Exercise3) {
 
 ## 说明
 
-将 possion 和 linear_elasticity 问题总结共通点，生成一个基础类baseproblem，然后在此之上继承和演化。
+- 将 possion 和 linear_elasticity 问题总结共通点，生成一个基础类baseproblem，然后在此之上继承和演化。
+- CMakeLists.txt 可以ADD_EXECUTABLE(。。。) 以及 DEAL_II_SETUP_TARGET(poisson/linear_elastcity) 分别编译生成两个项目，执行时通过文件名来区分执行的是哪一个。
+
+
 
 
 
