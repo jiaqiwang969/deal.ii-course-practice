@@ -10,12 +10,12 @@ subsection Error table
 end
 subsection LinearElasticity<2>
   set Coarsening and refinement factors         = 0.03 : 0.3
-  set Dirichlet boundary condition expression   = 0; 0
+  set Dirichlet boundary condition expression   = 0 ; 0
   set Dirichlet boundary ids                    = 0
   set Estimator type                            = exact
-  set Exact solution expression                 = 0; 0
+  set Exact solution expression                 = 0 ; 0
   set Finite element space                      = FESystem[FE_Q(1)^d]
-  set Forcing term expression                   = 1; 1
+  set Forcing term expression                   = 1 ; 1
   set Grid generator arguments                  = 0: 1: false
   set Grid generator function                   = hyper_cube
   set Linear elasticity lambda                  = 1
@@ -23,7 +23,7 @@ subsection LinearElasticity<2>
   set Local pre-refinement grid size expression = 0
   set Mapping degree                            = 1
   set Marking strategy                          = global
-  set Neumann boundary condition expression     = 0; 0
+  set Neumann boundary condition expression     = 0 ; 0
   set Neumann boundary ids                      = 
   set Number of global refinements              = 4
   set Number of refinement cycles               = 1

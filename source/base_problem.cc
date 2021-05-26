@@ -41,7 +41,7 @@ BaseProblem<dim>::BaseProblem(const unsigned int &n_components,
   , dirichlet_boundary_condition(n_components) // 初始化为矢量形式
   , neumann_boundary_condition(n_components)   // 初始化为矢量形式
   , error_table(std::vector<std::string>(n_components, "u"))
-  , solver_control("Solver control", 1000, 1e-12, 1e-12)
+  , solver_control("/Solver control", 1000, 1e-12, 1e-12)
 {
   TimerOutput::Scope timer_section(timer, "constructor");
   add_parameter("Finite element space", fe_name);
@@ -131,8 +131,8 @@ BaseProblem<dim>::make_grid()
       triangulation.execute_coarsening_and_refinement();
     }
 
-  std::cout << "Number of active cells: " << triangulation.n_active_cells()
-            << std::endl;
+  pcout << "Number of active cells: " << triangulation.n_active_cells()
+        << std::endl;
 }
 
 
@@ -259,12 +259,32 @@ BaseProblem<dim>::assemble_system()
 
   CopyData copy(fe->n_dofs_per_cell());
 
-  for (const auto &cell : dof_handler.active_cell_iterators())
-    if (cell->is_locally_owned())
-      {
-        assemble_system_one_cell(cell, scratch, copy);
-        copy_one_cell(copy);
-      }
+  // for (const auto &cell : dof_handler.active_cell_iterators())
+  //   if (cell->is_locally_owned())
+  //     {
+  //       assemble_system_one_cell(cell, scratch, copy);
+  //       copy_one_cell(copy);
+  //     }
+  /**
+   * 将 MPI 和 Threads 合并
+   */
+  auto worker = [&](const auto &cell, auto &scratch, auto &copy) {
+    assemble_system_one_cell(cell, scratch, copy);
+  };
+
+  auto copier = [&](const auto &copy) { copy_one_cell(copy); };
+
+  using CellFilter =
+    FilteredIterator<typename DoFHandler<dim>::active_cell_iterator>;
+
+  WorkStream::run(CellFilter(IteratorFilters::LocallyOwnedCell(),
+                             dof_handler.begin_active()), // is_locally_owned
+                  CellFilter(IteratorFilters::LocallyOwnedCell(),
+                             dof_handler.end()),
+                  worker,
+                  copier,
+                  scratch,
+                  copy);
 
 
   system_matrix.compress(VectorOperation::add);

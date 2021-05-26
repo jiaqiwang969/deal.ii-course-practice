@@ -463,7 +463,7 @@ TEST_F(PoissonTester, Exercise3) {
 
 ### 操作
 
-1. 将 "BaseProblem "类复制到 "BaseBlockProblem "类中，并将Linear alagebra类的平面版本替换为 "Block "版本，初始化为构造时推导出的块数，使用一个 "blocking "参数，即：。`blocking = {0, 0, 0, 1}`将指一个有两个块的系统，在第一个块中，我们将前三个组件分组（`0,0,0`->`0`是块索引），在第二个块中我们将第四个组件分组。
+1. 将 "BaseProblem "类继承到 "BaseBlockProblem "类中，并将Linear alagebra类的平面版本替换为 "Block "版本，初始化为构造时推导出的块数，使用一个 "blocking "参数，即：。`blocking = {0, 0, 0, 1}`将指一个有两个块的系统，在第一个块中，我们将前三个组件分组（`0,0,0`->`0`是块索引），在第二个块中我们将第四个组件分组。
 
 2. 确保你对自由度按块重新编号，并且你 用正确的块结构初始化块矩阵。以一个 以库中的 "step-32"为例。
 

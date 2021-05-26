@@ -161,6 +161,7 @@ TEST_F(Poisson2DTester, TestLinearWithHangingNodes)
       << "end" << std::endl;
 
   parse_string(str.str());
+  initialize("");
   make_grid();
 
   for (unsigned int i = 0; i < 2; ++i)
