@@ -1,8 +1,50 @@
 [
 {
   "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/stokes.dir/source/base_problem.cc.o -c /workspaces/deal.ii-course-practice/source/base_problem.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/base_problem.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/stokes.dir/source/base_block_problem.cc.o -c /workspaces/deal.ii-course-practice/source/base_block_problem.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/base_block_problem.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/stokes.dir/source/poisson.cc.o -c /workspaces/deal.ii-course-practice/source/poisson.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/poisson.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/stokes.dir/source/linear_elasticity.cc.o -c /workspaces/deal.ii-course-practice/source/linear_elasticity.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/linear_elasticity.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/stokes.dir/source/stokes.cc.o -c /workspaces/deal.ii-course-practice/source/stokes.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/stokes.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/stokes.dir/source/main.cc.o -c /workspaces/deal.ii-course-practice/source/main.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/main.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
   "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/linear_elasticity.dir/source/base_problem.cc.o -c /workspaces/deal.ii-course-practice/source/base_problem.cc",
   "file": "/workspaces/deal.ii-course-practice/source/base_problem.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/linear_elasticity.dir/source/base_block_problem.cc.o -c /workspaces/deal.ii-course-practice/source/base_block_problem.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/base_block_problem.cc"
 },
 
 {
@@ -19,6 +61,12 @@
 
 {
   "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/linear_elasticity.dir/source/stokes.cc.o -c /workspaces/deal.ii-course-practice/source/stokes.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/stokes.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
   "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/linear_elasticity.dir/source/main.cc.o -c /workspaces/deal.ii-course-practice/source/main.cc",
   "file": "/workspaces/deal.ii-course-practice/source/main.cc"
 },
@@ -31,6 +79,12 @@
 
 {
   "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/poisson.dir/source/base_block_problem.cc.o -c /workspaces/deal.ii-course-practice/source/base_block_problem.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/base_block_problem.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
   "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/poisson.dir/source/poisson.cc.o -c /workspaces/deal.ii-course-practice/source/poisson.cc",
   "file": "/workspaces/deal.ii-course-practice/source/poisson.cc"
 },
@@ -39,6 +93,12 @@
   "directory": "/workspaces/deal.ii-course-practice/build-container",
   "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/poisson.dir/source/linear_elasticity.cc.o -c /workspaces/deal.ii-course-practice/source/linear_elasticity.cc",
   "file": "/workspaces/deal.ii-course-practice/source/linear_elasticity.cc"
+},
+
+{
+  "directory": "/workspaces/deal.ii-course-practice/build-container",
+  "command": "/bin/g++-9  -DBOOST_NO_AUTO_PTR -DDEBUG -I.././include -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include -isystem /usr/include/trilinos -isystem /usr/include/hdf5/openmpi -isystem /usr/include/scotch -isystem /usr/include/suitesparse -isystem /usr/include/petsc -isystem /usr/lib/aarch64-linux-gnu/hdf5/openmpi/include -isystem /usr/include/opencascade -isystem /usr/include/slepc  -g   -pedantic -fPIC -Wall -Wextra -Woverloaded-virtual -Wpointer-arith -Wsign-compare -Wswitch -Wsynth -Wwrite-strings -Wno-placement-new -Wno-literal-suffix -Wno-psabi -Wno-class-memaccess -std=c++17 -g -O2 -fdebug-prefix-map=/build/deal.ii-Annjpe/deal.ii-9.2.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -Wno-nonnull-compare -Wno-address -pthread -Wno-unused-local-typedefs -O0 -ggdb -Wa,--compress-debug-sections -o CMakeFiles/poisson.dir/source/stokes.cc.o -c /workspaces/deal.ii-course-practice/source/stokes.cc",
+  "file": "/workspaces/deal.ii-course-practice/source/stokes.cc"
 },
 
 {

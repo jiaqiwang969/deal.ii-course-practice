@@ -1,4 +1,5 @@
 /workspaces/deal.ii-course-practice/build-container/CMakeFiles/rebuild_cache.dir
 /workspaces/deal.ii-course-practice/build-container/CMakeFiles/edit_cache.dir
+/workspaces/deal.ii-course-practice/build-container/CMakeFiles/stokes.dir
 /workspaces/deal.ii-course-practice/build-container/CMakeFiles/linear_elasticity.dir
 /workspaces/deal.ii-course-practice/build-container/CMakeFiles/poisson.dir
