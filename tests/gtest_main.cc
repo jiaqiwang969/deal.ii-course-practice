@@ -2,7 +2,7 @@
 #include <deal.II/base/utilities.h>
 
 #include <gtest/gtest.h>
-// 只对 proc 0 进行监听
+// Make sure we output just on proc zero when run in parallel.
 int
 main(int argc, char *argv[])
 {

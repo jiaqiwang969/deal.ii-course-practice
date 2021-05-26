@@ -18,6 +18,10 @@
         "*.inst.in": "cpp",
         "*.h": "cpp",
         "bitset": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "functional": "cpp",
+        "memory": "cpp",
+        "sstream": "cpp",
+        "optional": "cpp"
     }
 }

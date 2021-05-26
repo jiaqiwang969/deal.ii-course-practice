@@ -232,9 +232,6 @@ gtest_SOURCE_DIR:STATIC=/workspaces/deal.ii-course-practice
 //Dependencies for the target
 linear_elasticity-lib_LIB_DEPENDS:STATIC=general;deal.ii.g;
 
-//Dependencies for the target
-poisson-lib_LIB_DEPENDS:STATIC=general;deal.ii.g;
-
 
 ########################
 # INTERNAL cache entries
