@@ -38,7 +38,7 @@ void
 BaseBlockProblem<dim>::setup_system()
 {
   TimerOutput::Scope timer_section(this->timer, "setup_system");
-  if (!this->fe)
+  if (!this->fe) // this 其作用就是指向成员函数所作用的对象
     {
       this->fe = FETools::get_fe_by_name<dim>(this->fe_name);
       this->mapping =
@@ -119,7 +119,7 @@ BaseBlockProblem<dim>::setup_system()
   //                                            mpi_communicator,
   //                                            locally_relevant_dofs);
 
-
+  dsp.compress();
   system_block_matrix.reinit(dsp);
 
   block_solution.reinit(locally_owned_dofs, this->mpi_communicator);

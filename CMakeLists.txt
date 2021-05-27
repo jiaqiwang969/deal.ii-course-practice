@@ -13,9 +13,11 @@ SET(CMAKE_MACOSX_RPATH 1)
 # Executable for the exerciese
 ADD_EXECUTABLE(poisson
     source/base_problem.cc 
+    source/base_block_problem.cc 
     source/poisson.cc 
     source/base_problem.cc 
     source/linear_elasticity.cc
+    source/stokes.cc
     source/main.cc)
 
 
@@ -23,15 +25,28 @@ DEAL_II_SETUP_TARGET(poisson)
 
 ADD_EXECUTABLE(linear_elasticity
     source/base_problem.cc 
+    source/base_block_problem.cc 
     source/poisson.cc 
     source/base_problem.cc 
     source/linear_elasticity.cc
+    source/stokes.cc
     source/main.cc)
 
 
 DEAL_II_SETUP_TARGET(linear_elasticity)
 
-#DEAL_II_SETUP_TARGET(stokes)
+ADD_EXECUTABLE(stokes
+    source/base_problem.cc 
+    source/base_block_problem.cc 
+    source/poisson.cc 
+    source/base_problem.cc 
+    source/linear_elasticity.cc
+    source/stokes.cc
+    source/main.cc)
+
+
+DEAL_II_SETUP_TARGET(stokes)
+
 
 
 # # Library of the executable

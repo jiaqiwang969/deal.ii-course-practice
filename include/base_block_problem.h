@@ -95,37 +95,37 @@ protected:
   /**
    * Dofs per block
    */
-  std::vector<types::global_dof_index> dofs_per_block;
+  std::vector<types::global_dof_index> dofs_per_block; // 改为vector
 
   /**
    * 该MPI进程拥有的所有自由度。
    */
-  std::vector<IndexSet> locally_owned_dofs;
+  std::vector<IndexSet> locally_owned_dofs; // 改为vector
 
   /**
    * 输出和误差估计所需的所有自由度。
    */
-  std::vector<IndexSet> locally_relevant_dofs;
+  std::vector<IndexSet> locally_relevant_dofs; // 改为vector
 
   /**
    * 系统矩阵。
    */
-  LA::MPI::BlockSparseMatrix system_block_matrix;
+  LA::MPI::BlockSparseMatrix system_block_matrix; // 改为Block
 
   /**
    * 用于输出和误差估计的解决方案向量的只读副本。
    */
-  LA::MPI::BlockVector locally_relevant_block_solution;
+  LA::MPI::BlockVector locally_relevant_block_solution; // 改为Block
 
   /**
    * Solution vector.
    */
-  LA::MPI::BlockVector block_solution;
+  LA::MPI::BlockVector block_solution; // 改为Block
 
   /**
    * 系统的右手边。读写向量，只包含本地拥有的dofs。
    */
-  LA::MPI::BlockVector system_block_rhs;
+  LA::MPI::BlockVector system_block_rhs; // 改为Block
 
 
   /**
