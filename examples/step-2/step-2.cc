@@ -20,10 +20,10 @@
 
 // The first few includes are just like in the previous program, so do not
 // require additional comments:
+#include <deal.II/grid/grid_generator.h>
 #include <deal.II/grid/tria.h>
 #include <deal.II/grid/tria_accessor.h>
 #include <deal.II/grid/tria_iterator.h>
-#include <deal.II/grid/grid_generator.h>
 
 // However, the next file is new. We need this include file for the
 // association of degrees of freedom ("DoF"s) to vertices, lines, and cells:
@@ -265,7 +265,8 @@ void renumber_dofs(DoFHandler<2> &dof_handler)
 // and create the triangulation, then create a <code>DoFHandler</code> object
 // and associate it to the triangulation, and finally call above two functions
 // on it:
-int main()
+int
+main()
 {
   Triangulation<2> triangulation;
   make_grid(triangulation);

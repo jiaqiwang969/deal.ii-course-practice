@@ -29,8 +29,8 @@
 #include <deal.II/grid/grid_out.h>
 
 // This is needed for C++ output:
-#include <iostream>
 #include <fstream>
+#include <iostream>
 // And this for the declarations of the `sqrt` and `fabs` functions:
 #include <cmath>
 
@@ -47,7 +47,8 @@ using namespace dealii;
 
 // In the following, first function, we simply use the unit square as domain
 // and produce a globally refined grid from it.
-void first_grid()
+void
+first_grid()
 {
   // The first thing to do is to define an object for a triangulation of a
   // two-dimensional domain:
@@ -82,7 +83,8 @@ void first_grid()
 
 // The grid in the following, second function is slightly more complicated in
 // that we use a ring domain and refine the result once globally.
-void second_grid()
+void
+second_grid()
 {
   // We start again by defining an object for a triangulation of a
   // two-dimensional domain:
@@ -254,7 +256,8 @@ void second_grid()
 
 // Finally, the main function. There isn't much to do here, only to call the
 // two subfunctions, which produce the two grids.
-int main()
+int
+main()
 {
   first_grid();
   second_grid();

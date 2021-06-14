@@ -21,126 +21,99 @@
 
 // @sect3{Many new include files}
 
-// These include files are already known to you. They declare the classes
-// which handle triangulations and enumeration of degrees of freedom:
-#include <deal.II/grid/tria.h>
+//  这些包含文件已经为你所知。它们声明了处理三角形和自由度枚举的类。
 #include <deal.II/dofs/dof_handler.h>
-// And this is the file in which the functions are declared that create grids:
+
+#include <deal.II/grid/tria.h>
+// 而这是声明创建网格的函数的文件。
 #include <deal.II/grid/grid_generator.h>
 
-// The next three files contain classes which are needed for loops over all
-// cells and to get the information from the cell objects. The first two have
-// been used before to get geometric information from cells; the last one is
-// new and provides information about the degrees of freedom local to a cell:
-#include <deal.II/grid/tria_accessor.h>
-#include <deal.II/grid/tria_iterator.h>
+//  接下来的三个文件包含了所有单元的循环和从单元对象中获取信息所需的类。前两个文件以前被用来从单元中获取几何信息；最后一个是新的，它提供了一个单元中的自由度信息。
 #include <deal.II/dofs/dof_accessor.h>
 
-// This file contains the description of the Lagrange interpolation finite
-// element:
+#include <deal.II/grid/tria_accessor.h>
+#include <deal.II/grid/tria_iterator.h>
+
+//  该文件包含拉格朗日插值有限元的描述。
 #include <deal.II/fe/fe_q.h>
 
-// And this file is needed for the creation of sparsity patterns of sparse
-// matrices, as shown in previous examples:
+//  而这个文件是创建稀疏矩阵的稀疏模式所需要的，如前面的例子中所示。
 #include <deal.II/dofs/dof_tools.h>
 
-// The next two files are needed for assembling the matrix using quadrature on
-// each cell. The classes declared in them will be explained below:
-#include <deal.II/fe/fe_values.h>
+//  接下来的两个文件是在每个单元上使用正交法组装矩阵所需要的。下面将解释其中声明的类。
 #include <deal.II/base/quadrature_lib.h>
 
-// The following three include files we need for the treatment of boundary
-// values:
+#include <deal.II/fe/fe_values.h>
+
+//  下面三个包括我们在处理边界值时需要的文件。
 #include <deal.II/base/function.h>
-#include <deal.II/numerics/vector_tools.h>
+
 #include <deal.II/numerics/matrix_tools.h>
+#include <deal.II/numerics/vector_tools.h>
 
-// We're now almost to the end. The second to last group of include files is
-// for the linear algebra which we employ to solve the system of equations
-// arising from the finite element discretization of the Laplace equation. We
-// will use vectors and full matrices for assembling the system of equations
-// locally on each cell, and transfer the results into a sparse matrix. We
-// will then use a Conjugate Gradient solver to solve the problem, for which
-// we need a preconditioner (in this program, we use the identity
-// preconditioner which does nothing, but we need to include the file anyway):
-#include <deal.II/lac/vector.h>
-#include <deal.II/lac/full_matrix.h>
-#include <deal.II/lac/sparse_matrix.h>
+//  我们现在几乎到了终点。第二组到最后一组include文件是用于线性代数的，我们用它来解决拉普拉斯方程的有限元离散化产生的方程组。我们将使用向量和全矩阵在每个单元中组装方程组，并将结果转移到稀疏矩阵中。然后我们将使用共轭梯度求解器来解决这个问题，为此我们需要一个预处理程序（在这个程序中，我们使用身份预处理程序，它没有任何作用，但我们还是需要包含这个文件）。
 #include <deal.II/lac/dynamic_sparsity_pattern.h>
-#include <deal.II/lac/solver_cg.h>
+#include <deal.II/lac/full_matrix.h>
 #include <deal.II/lac/precondition.h>
+#include <deal.II/lac/solver_cg.h>
+#include <deal.II/lac/sparse_matrix.h>
+#include <deal.II/lac/vector.h>
 
-// Finally, this is for output to a file and to the console:
+// 最后，这是用来输出到文件和控制台的。
 #include <deal.II/numerics/data_out.h>
+
 #include <fstream>
 #include <iostream>
 
-// ...and this is to import the deal.II namespace into the global scope:
+// ...这是为了将deal.II命名空间导入到全局范围。
 using namespace dealii;
 
 // @sect3{The <code>Step3</code> class}
 
-// Instead of the procedural programming of previous examples, we encapsulate
-// everything into a class for this program. The class consists of functions
-// which each perform certain aspects of a finite element program, a `main`
-// function which controls what is done first and what is done next, and a
-// list of member variables.
 
-// The public part of the class is rather short: it has a constructor and a
-// function `run` that is called from the outside and acts as something like
-// the `main` function: it coordinates which operations of this class shall be
-// run in which order. Everything else in the class, i.e. all the functions
-// that actually do anything, are in the private section of the class:
+//  在这个程序中，我们没有采用以前例子中的程序化编程，而是将所有东西都封装在一个类中。该类由各自执行有限元程序某些方面的函数组成，一个控制先做什么和后做什么的`main`函数，以及一个成员变量的列表。
+
+//  该类的公共部分相当短：它有一个构造函数和一个从外部调用的函数`run`，其作用类似于`main`函数：它协调该类的哪些操作应以何种顺序运行。类中的其他东西，也就是所有真正做事情的函数，都在类的私有部分。
 class Step3
 {
 public:
   Step3();
 
-  void run();
+  void
+  run();
 
-  // Then there are the member functions that mostly do what their names
-  // suggest and whose have been discussed in the introduction already. Since
-  // they do not need to be called from outside, they are made private to this
-  // class.
+  //  然后是成员函数，它们主要做它们名字所暗示的事情，在介绍中已经讨论过了。因为它们不需要从外部调用，所以它们是这个类的私有函数。
 
 private:
-  void make_grid();
-  void setup_system();
-  void assemble_system();
-  void solve();
-  void output_results() const;
+  void
+  make_grid();
+  void
+  setup_system();
+  void
+  assemble_system();
+  void
+  solve();
+  void
+  output_results() const;
 
-  // And finally we have some member variables. There are variables describing
-  // the triangulation and the global numbering of the degrees of freedom (we
-  // will specify the exact polynomial degree of the finite element in the
-  // constructor of this class)...
+  // 最后我们还有一些成员变量。有一些变量描述了三角形和自由度的全局编号（我们将在这个类的构造函数中指定有限元的确切多项式程度）...
   Triangulation<2> triangulation;
   FE_Q<2>          fe;
   DoFHandler<2>    dof_handler;
 
-  // ...variables for the sparsity pattern and values of the system matrix
-  // resulting from the discretization of the Laplace equation...
+  //  ...拉普拉斯方程离散化产生的系统矩阵的稀疏模式和数值的变量...
   SparsityPattern      sparsity_pattern;
   SparseMatrix<double> system_matrix;
 
-  // ...and variables which will hold the right hand side and solution
-  // vectors.
+  //  ...和变量，这些变量将持有右手边和解决方案的向量。
   Vector<double> solution;
   Vector<double> system_rhs;
 };
 
 // @sect4{Step3::Step3}
 
-// Here comes the constructor. It does not much more than first to specify
-// that we want bi-linear elements (denoted by the parameter to the finite
-// element object, which indicates the polynomial degree), and to associate
-// the dof_handler variable to the triangulation we use. (Note that the
-// triangulation isn't set up with a mesh at all at the present time, but the
-// DoFHandler doesn't care: it only wants to know which triangulation it will
-// be associated with, and it only starts to care about an actual mesh once
-// you try to distribute degree of freedom on the mesh using the
-// distribute_dofs() function.) All the other member variables of the Step3
-// class have a default constructor which does all we want.
+//  这里有一个构造函数。它除了首先指定我们需要双线性元素（由有限元对象的参数表示，它表示多项式的程度），并将dof_handler变量与我们使用的三角形相关联之外，没有做更多的工作。(注意，目前三角结构并没有设置网格，但是DoFHandler并不关心：它只想知道它将与哪个三角结构相关联，只有当你使用distribution_dofs()函数试图在网格上分布自由度时，它才开始关心实际的网格。)
+//  Step3类的所有其他成员变量都有一个默认的构造函数，它可以完成我们想要的一切。
 Step3::Step3()
   : fe(1)
   , dof_handler(triangulation)
@@ -149,20 +122,14 @@ Step3::Step3()
 
 // @sect4{Step3::make_grid}
 
-// Now, the first thing we've got to do is to generate the triangulation on
-// which we would like to do our computation and number each vertex with a
-// degree of freedom. We have seen these two steps in step-1 and step-2
-// before, respectively.
-//
-// This function does the first part, creating the mesh.  We create the grid
-// and refine all cells five times. Since the initial grid (which is the
-// square $[-1,1] \times [-1,1]$) consists of only one cell, the final grid
-// has 32 times 32 cells, for a total of 1024.
-//
-// Unsure that 1024 is the correct number? We can check that by outputting the
-// number of cells using the <code>n_active_cells()</code> function on the
-// triangulation.
-void Step3::make_grid()
+//  现在，我们要做的第一件事是生成我们想在其上进行计算的三角形，并对每个顶点进行自由度编号。我们之前在步骤1和步骤2中分别看到了这两个步骤。
+
+//  这个函数做的是第一部分，创建网格。
+//  我们创建网格并对所有单元格进行五次细化。由于初始网格（即正方形$[-1,1]\times[-1,1]$）只由一个单元组成，最终的网格有32乘以32个单元，总共1024个。
+
+//  不确定1024是否是正确的数字？我们可以通过使用三角形上的<code>n_active_cells()</code>函数输出单元格的数量来检查。
+void
+Step3::make_grid()
 {
   GridGenerator::hyper_cube(triangulation, -1, 1);
   triangulation.refine_global(5);
@@ -171,59 +138,29 @@ void Step3::make_grid()
             << std::endl;
 }
 
-// @note We call the Triangulation::n_active_cells() function, rather than
-// Triangulation::n_cells(). Here, <i>active</i> means the cells that aren't
-// refined any further. We stress the adjective "active" since there are more
-// cells, namely the parent cells of the finest cells, their parents, etc, up
-// to the one cell which made up the initial grid. Of course, on the next
-// coarser level, the number of cells is one quarter that of the cells on the
-// finest level, i.e. 256, then 64, 16, 4, and 1. If you called
-// <code>triangulation.n_cells()</code> instead in the code above, you would
-// consequently get a value of 1365 instead. On the other hand, the number of
-// cells (as opposed to the number of active cells) is not typically of much
-// interest, so there is no good reason to print it.
+//  @note 我们调用Triangulation::n_active_cells()函数，而不是Triangulation::n_cells()。这里，<i>active</i>指的是没有被进一步细化的单元。我们强调 "活跃 "这个形容词，因为还有更多的单元，即最细单元的父单元，它们的父单元等等，直到构成初始网格的一个单元。当然，在下一个更粗的层次上，单元格的数量是最细层次上单元格的四分之一，即256，然后是64、16、4和1。如果你在上面的代码中调用<code>triangulation.n_cells()</code>，你会因此得到一个1365的值。另一方面，单元格的数量（相对于活动单元格的数量）通常没有什么意义，所以没有很好的理由去打印它。
 
 
 // @sect4{Step3::setup_system}
 
-// Next we enumerate all the degrees of freedom and set up matrix and vector
-// objects to hold the system data. Enumerating is done by using
-// DoFHandler::distribute_dofs(), as we have seen in the step-2 example. Since
-// we use the FE_Q class and have set the polynomial degree to 1 in the
-// constructor, i.e. bilinear elements, this associates one degree of freedom
-// with each vertex. While we're at generating output, let us also take a look
-// at how many degrees of freedom are generated:
-void Step3::setup_system()
+//  接下来我们列举所有的自由度，并设置矩阵和向量对象来保存系统数据。枚举是通过使用DoFHandler::distribution_dofs()完成的，正如我们在步骤2的例子中看到的那样。由于我们使用了FE_Q类，并且在构造函数中设置了多项式的度数为1，即双线性元素，这就将一个自由度与每个顶点联系起来。当我们在生成输出时，让我们也看看有多少自由度被生成。
+void
+Step3::setup_system()
 {
   dof_handler.distribute_dofs(fe);
   std::cout << "Number of degrees of freedom: " << dof_handler.n_dofs()
             << std::endl;
-  // There should be one DoF for each vertex. Since we have a 32 times 32
-  // grid, the number of DoFs should be 33 times 33, or 1089.
+  //  每个顶点应该有一个DoF。因为我们有一个32乘以32的网格，所以DoF的数量应该是33乘以33，即1089。
 
-  // As we have seen in the previous example, we set up a sparsity pattern by
-  // first creating a temporary structure, tagging those entries that might be
-  // nonzero, and then copying the data over to the SparsityPattern object
-  // that can then be used by the system matrix.
+  //  正如我们在前面的例子中所看到的，我们通过首先创建一个临时结构，标记那些可能为非零的条目，然后将数据复制到SparsityPattern对象中，然后可以被系统矩阵使用，来设置一个稀疏模式。
   DynamicSparsityPattern dsp(dof_handler.n_dofs());
   DoFTools::make_sparsity_pattern(dof_handler, dsp);
   sparsity_pattern.copy_from(dsp);
 
-  // Note that the SparsityPattern object does not hold the values of the
-  // matrix, it only stores the places where entries are. The entries
-  // themselves are stored in objects of type SparseMatrix, of which our
-  // variable system_matrix is one.
-  //
-  // The distinction between sparsity pattern and matrix was made to allow
-  // several matrices to use the same sparsity pattern. This may not seem
-  // relevant here, but when you consider the size which matrices can have,
-  // and that it may take some time to build the sparsity pattern, this
-  // becomes important in large-scale problems if you have to store several
-  // matrices in your program.
+  //  请注意，SparsityPattern对象并不持有矩阵的值，它只存储条目所在的位置。条目本身被存储在SparseMatrix类型的对象中，我们的变量system_matrix就是其中之一。区分稀疏模式和矩阵是为了让几个矩阵使用相同的稀疏模式。这在这里似乎并不重要，但是当你考虑到矩阵的大小，以及建立稀疏模式可能需要一些时间时，如果你必须在程序中存储几个矩阵，这在大规模问题中就变得很重要。
   system_matrix.reinit(sparsity_pattern);
 
-  // The last thing to do in this function is to set the sizes of the right
-  // hand side vector and the solution vector to the right values:
+  //  在这个函数中，最后要做的是将右侧向量和解向量的大小设置为正确的值。
   solution.reinit(dof_handler.n_dofs());
   system_rhs.reinit(dof_handler.n_dofs());
 }
@@ -231,139 +168,37 @@ void Step3::setup_system()
 // @sect4{Step3::assemble_system}
 
 
-// The next step is to compute the entries of the matrix and right hand side
-// that form the linear system from which we compute the solution. This is the
-// central function of each finite element program and we have discussed the
-// primary steps in the introduction already.
-//
-// The general approach to assemble matrices and vectors is to loop over all
-// cells, and on each cell compute the contribution of that cell to the global
-// matrix and right hand side by quadrature. The point to realize now is that
-// we need the values of the shape functions at the locations of quadrature
-// points on the real cell. However, both the finite element shape functions
-// as well as the quadrature points are only defined on the reference
-// cell. They are therefore of little help to us, and we will in fact hardly
-// ever query information about finite element shape functions or quadrature
-// points from these objects directly.
-//
-// Rather, what is required is a way to map this data from the reference cell
-// to the real cell. Classes that can do that are derived from the Mapping
-// class, though one again often does not have to deal with them directly:
-// many functions in the library can take a mapping object as argument, but
-// when it is omitted they simply resort to the standard bilinear Q1
-// mapping. We will go this route, and not bother with it for the moment (we
-// come back to this in step-10, step-11, and step-12).
-//
-// So what we now have is a collection of three classes to deal with: finite
-// element, quadrature, and mapping objects. That's too much, so there is one
-// type of class that orchestrates information exchange between these three:
-// the FEValues class. If given one instance of each three of these objects
-// (or two, and an implicit linear mapping), it will be able to provide you
-// with information about values and gradients of shape functions at
-// quadrature points on a real cell.
-//
-// Using all this, we will assemble the linear system for this problem in the
-// following function:
-void Step3::assemble_system()
+//  下一步是计算形成线性系统的矩阵和右手边的条目，我们从中计算出解决方案。这是每个有限元程序的核心功能，我们在介绍中已经讨论了主要步骤。
+
+//  组装矩阵和向量的一般方法是在所有单元上循环，并在每个单元上通过正交计算该单元对全局矩阵和右侧的贡献。现在要认识到的一点是，我们需要实心单元上正交点位置的形状函数值。然而，有限元形状函数和正交点都只定义在参考单元上。因此，它们对我们帮助不大，事实上，我们几乎不会直接从这些对象中查询有关有限元形状函数或正交点的信息。
+
+//  相反，我们需要的是一种将这些数据从参考单元映射到实际单元的方法。可以做到这一点的类是由Mapping类派生出来的，尽管人们常常不必直接与它们打交道：库中的许多函数可以将映射对象作为参数，但当它被省略时，它们只是求助于标准的双线性Q1映射。我们将走这条路，暂时不去管它（我们在第10步、第11步和第12步再来讨论这个问题）。
+
+//  所以我们现在有三个类的集合来处理：有限元、正交和映射对象。这就太多了，所以有一种类型的类可以协调这三者之间的信息交流：FEValues类。如果给这三个对象各一个实例（或两个，以及一个隐式线性映射），它就能为你提供实心单元上正交点的形状函数的值和梯度的信息。
+
+//  利用所有这些，我们将把这个问题的线性系统组装在以下函数中。
+void
+Step3::assemble_system()
 {
-  // Ok, let's start: we need a quadrature formula for the evaluation of the
-  // integrals on each cell. Let's take a Gauss formula with two quadrature
-  // points in each direction, i.e. a total of four points since we are in
-  // 2D. This quadrature formula integrates polynomials of degrees up to three
-  // exactly (in 1D). It is easy to check that this is sufficient for the
-  // present problem:
+  //  好吧，让我们开始吧：我们需要一个正交公式来评估每个单元的积分。让我们采用一个高斯公式，每个方向有两个正交点，即总共有四个点，因为我们是在二维。这个正交公式可以精确地积分三度以下的多项式（在一维）。很容易检查出，这对目前的问题来说是足够的。
   QGauss<2> quadrature_formula(fe.degree + 1);
-  // And we initialize the object which we have briefly talked about above. It
-  // needs to be told which finite element we want to use, and the quadrature
-  // points and their weights (jointly described by a Quadrature object). As
-  // mentioned, we use the implied Q1 mapping, rather than specifying one
-  // ourselves explicitly. Finally, we have to tell it what we want it to
-  // compute on each cell: we need the values of the shape functions at the
-  // quadrature points (for the right hand side $(\varphi_i,f)$), their
-  // gradients (for the matrix entries $(\nabla \varphi_i, \nabla
-  // \varphi_j)$), and also the weights of the quadrature points and the
-  // determinants of the Jacobian transformations from the reference cell to
-  // the real cells.
-  //
-  // This list of what kind of information we actually need is given as a
-  // collection of flags as the third argument to the constructor of
-  // FEValues. Since these values have to be recomputed, or updated, every
-  // time we go to a new cell, all of these flags start with the prefix
-  // <code>update_</code> and then indicate what it actually is that we want
-  // updated. The flag to give if we want the values of the shape functions
-  // computed is #update_values; for the gradients it is
-  // #update_gradients. The determinants of the Jacobians and the quadrature
-  // weights are always used together, so only the products (Jacobians times
-  // weights, or short <code>JxW</code>) are computed; since we need them, we
-  // have to list #update_JxW_values as well:
+  //  然后我们初始化我们在上面简单谈过的对象。它需要被告知我们要使用哪个有限元，以及正交点和它们的权重（由一个正交对象共同描述）。如前所述，我们使用隐含的Q1映射，而不是自己明确指定一个。最后，我们必须告诉它我们希望它在每个单元上计算什么：我们需要正交点的形状函数值（对于右手边的$(\varphi_i,f)$），它们的梯度（对于矩阵条目$(\nabla
+  //  \varphi_i, \nabla
+  //  \varphi_j)$），还有正交点的权重和从参考单元到实际单元的雅各布变换的行列式。
+
+  //  我们实际需要的信息清单是作为FEValues构造函数的第三个参数，以标志集合的形式给出的。由于这些值必须重新计算，或更新，每次我们去一个新的单元，所有这些标志都以<code>update_</code>的前缀开始，然后指出我们想要更新的实际内容。如果我们想要计算形状函数的值，那么给出的标志是#update_values；对于梯度，它是#update_gradients。雅各布的行列式和正交权重总是一起使用的，所以只有乘积（雅各布乘以权重，或简称<code>JxW</code>）被计算；因为我们需要它们，所以我们也必须列出#update_JxW_values。
   FEValues<2> fe_values(fe,
                         quadrature_formula,
                         update_values | update_gradients | update_JxW_values);
-  // The advantage of this approach is that we can specify what kind of
-  // information we actually need on each cell. It is easily understandable
-  // that this approach can significantly speed up finite element computations,
-  // compared to approaches where everything, including second derivatives,
-  // normal vectors to cells, etc are computed on each cell, regardless of
-  // whether they are needed or not.
-  //
-  // @note The syntax <code>update_values | update_gradients |
-  // update_JxW_values</code> is not immediately obvious to anyone not
-  // used to programming bit operations in C for years already. First,
-  // <code>operator|</code> is the <i>bitwise or operator</i>, i.e.,
-  // it takes two integer arguments that are interpreted as bit
-  // patterns and returns an integer in which every bit is set for
-  // which the corresponding bit is set in at least one of the two
-  // arguments. For example, consider the operation
-  // <code>9|10</code>. In binary, <code>9=0b1001</code> (where the
-  // prefix <code>0b</code> indicates that the number is to be
-  // interpreted as a binary number) and <code>10=0b1010</code>. Going
-  // through each bit and seeing whether it is set in one of the
-  // argument, we arrive at <code>0b1001|0b1010=0b1011</code> or, in
-  // decimal notation, <code>9|10=11</code>. The second piece of
-  // information you need to know is that the various
-  // <code>update_*</code> flags are all integers that have <i>exactly
-  // one bit set</i>. For example, assume that
-  // <code>update_values=0b00001=1</code>,
-  // <code>update_gradients=0b00010=2</code>,
-  // <code>update_JxW_values=0b10000=16</code>. Then
-  // <code>update_values | update_gradients | update_JxW_values =
-  // 0b10011 = 19</code>. In other words, we obtain a number that
-  // <i>encodes a binary mask representing all of the operations you
-  // want to happen</i>, where each operation corresponds to exactly
-  // one bit in the integer that, if equal to one, means that a
-  // particular piece should be updated on each cell and, if it is
-  // zero, means that we need not compute it. In other words, even
-  // though <code>operator|</code> is the <i>bitwise OR operation</i>,
-  // what it really represents is <i>I want this AND that AND the
-  // other</i>. Such binary masks are quite common in C programming,
-  // but maybe not so in higher level languages like C++, but serve
-  // the current purpose quite well.
+  //  这种方法的优点是，我们可以指定在每个单元上实际需要什么样的信息。很容易理解的是，这种方法可以大大加快有限元计算的速度，相比之下，所有的东西，包括二阶导数、单元的法向量等都在每个单元上计算，不管是否需要它们。
 
-  // For use further down below, we define a shortcut for a value that will
-  // be used very frequently. Namely, an abbreviation for the number of degrees
-  // of freedom on each cell (since we are in 2D and degrees of freedom are
-  // associated with vertices only, this number is four, but we rather want to
-  // write the definition of this variable in a way that does not preclude us
-  // from later choosing a different finite element that has a different
-  // number of degrees of freedom per cell, or work in a different space
-  // dimension).
-  //
-  // In general, it is a good idea to use a symbolic name instead of
-  // hard-coding these numbers even if you know them, since for example,
-  // you may want to change the finite element at some time. Changing the
-  // element would have to be done in a different function and it is easy
-  // to forget to make a corresponding change in another part of the program.
-  // It is better to not rely on your own calculations, but instead ask
-  // the right object for the information: Here, we ask the finite element
-  // to tell us about the number of degrees of freedom per cell and we
-  // will get the correct number regardless of the space dimension or
-  // polynomial degree we may have chosen elsewhere in the program.
-  //
-  // The shortcut here, defined primarily to discuss the basic concept
-  // and not because it saves a lot of typing, will then make the following
-  // loops a bit more readable. You will see such shortcuts in many places in
-  // larger programs, and `dofs_per_cell` is one that is more or less the
-  // conventional name for this kind of object.
+  //  @注意 <code>update_values | update_gradients | update_JxW_values</code> 语法对于那些不习惯用C语言编程多年的位操作的人来说不是很明显。首先，<code>operator|</code>是<i>bitwise or operator</i>，也就是说，它接受两个整数参数，这些参数被解释为位模式，并返回一个整数，其中每个位都被设置，因为在两个参数中至少有一个的对应位被设置。例如，考虑操作<code>9|10</code>。在二进制中，<code>9=0b1001</code>（其中前缀<code>0b</code>表示该数字将被解释为二进制数字）和<code>10=0b1010</code>。通过每个比特，看它是否在其中一个参数中被设置，我们得出<code>0b1001|0b1010=0b1011</code>，或者，用十进制符号表示，<code>9|10=11</code>。你需要知道的第二个信息是，各种<code>update_*</code>标志都是整数，<i>正好有一个比特被设置</i>。例如，假设<code>update_values=0b00001=1</code>，<code>update_gradients=0b00010=2</code>，<code>update_JxW_values=0b10000=16</code>。那么<code>update_values | update_gradients | update_JxW_values = 0b10011 = 19</code>。换句话说，我们得到一个数字，<i>编码一个二进制掩码，代表你想要发生的所有操作</i>，其中每个操作正好对应于整数中的一个位，如果等于1，意味着每个单元格上的特定片断应该被更新，如果是0，意味着我们不需要计算它。换句话说，即使<code>operator|</code>是<i>bitwise OR操作</i>，它真正代表的是<i>我想要这个和那个和另一个</i>。这样的二进制掩码在C语言编程中很常见，但在C++这样的高级语言中也许不是这样，但却能很好地满足当前的目的。
+
+  //  为了在下文中进一步使用，我们为一个将被频繁使用的值定义了一个快捷方式。也就是每个单元的自由度数量的缩写（因为我们是在二维，自由度只与顶点相关，所以这个数字是四，但是我们更希望在写这个变量的定义时，不妨碍我们以后选择不同的有限元，每个单元有不同的自由度数量，或者在不同的空间维度工作）。
+
+  //  一般来说，使用符号名称而不是硬编码这些数字是个好主意，即使你知道它们，因为例如，你可能想在某个时候改变有限元。改变元素就必须在不同的函数中进行，而且很容易忘记在程序的另一部分做相应的改变。最好不要依赖自己的计算，而是向正确的对象索取信息。在这里，我们要求有限元告诉我们每个单元的自由度数，不管我们在程序的其他地方选择的空间维度或多项式程度如何，我们都会得到正确的数字。
+
+  //  这里定义的快捷方式主要是为了讨论基本概念，而不是因为它可以节省大量的打字量，那么下面的循环就会变得更容易阅读。在大型程序中，你会在很多地方看到这样的快捷方式，`dofs_per_cell`就是一个或多或少是这类对象的常规名称。
   const unsigned int dofs_per_cell = fe.dofs_per_cell;
 
   // Now, we said that we wanted to assemble the global matrix and vector
@@ -542,7 +377,8 @@ void Step3::assemble_system()
 // number for finite element computations, where 100.000 is a more usual
 // number.  For this number of variables, direct methods are no longer usable
 // and you are forced to use methods like CG.
-void Step3::solve()
+void
+Step3::solve()
 {
   // First, we need to have an object that knows how to tell the CG algorithm
   // when to stop. This is done by using a SolverControl object, and as
@@ -574,7 +410,8 @@ void Step3::solve()
 // values at the boundary, or the average flux across the outflow, etc). We
 // have no such postprocessing here, but we would like to write the solution
 // to a file.
-void Step3::output_results() const
+void
+Step3::output_results() const
 {
   // To write the output to a file, we need an object which knows about output
   // formats and the like. This is the DataOut class, and we need an object of
@@ -614,7 +451,8 @@ void Step3::output_results() const
 // this is done resembles the order in which most finite element programs
 // work. Since the names are mostly self-explanatory, there is not much to
 // comment about:
-void Step3::run()
+void
+Step3::run()
 {
   make_grid();
   setup_system();
@@ -676,7 +514,8 @@ void Step3::run()
 // examples later on (e.g., in step-22) where solvers are nested more
 // deeply and where you may get useful information by setting the
 // depth even higher.
-int main()
+int
+main()
 {
   deallog.depth_console(2);
 

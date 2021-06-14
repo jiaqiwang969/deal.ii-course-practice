@@ -1,0 +1,10 @@
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/rebuild_cache.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/edit_cache.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/strip_comments.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/distclean.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/runclean.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/release.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/debug.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/run.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/info.dir
+/workspaces/deal.ii-course-practice/examples/step-15/CMakeFiles/step-15.dir
