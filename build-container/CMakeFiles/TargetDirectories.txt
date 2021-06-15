@@ -1,0 +1,6 @@
+/workspaces/deal.ii-course-practice/build-container/CMakeFiles/rebuild_cache.dir
+/workspaces/deal.ii-course-practice/build-container/CMakeFiles/edit_cache.dir
+/workspaces/deal.ii-course-practice/build-container/CMakeFiles/test.dir
+/workspaces/deal.ii-course-practice/build-container/CMakeFiles/gtest.dir
+/workspaces/deal.ii-course-practice/build-container/CMakeFiles/poisson-lib.dir
+/workspaces/deal.ii-course-practice/build-container/CMakeFiles/poisson.dir
