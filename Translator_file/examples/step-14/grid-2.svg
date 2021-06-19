@@ -1,0 +1,174 @@
+<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+
+<!-- internal style sheet -->
+<style type="text/css"><![CDATA[
+ rect.background{fill:white}
+ rect{fill:none; stroke:rgb(25,25,25); stroke-width:2}
+ text{font-family:Helvetica; text-anchor:middle; fill:rgb(25,25,25)}
+ line{stroke:rgb(25,25,25); stroke-width:4}
+ path{fill:none; stroke:rgb(25,25,25); stroke-width:2}
+ circle{fill:white; stroke:black; stroke-width:2}
+
+ path.p0{fill:rgb(0,102,255); stroke:rgb(25,25,25); stroke-width:2}
+ path.ps0{fill:rgb(0,77,191); stroke:rgb(20,20,20); stroke-width:2}
+ rect.r0{fill:rgb(0,102,255); stroke:rgb(25,25,25); stroke-width:2}
+ path.p1{fill:rgb(0,255,102); stroke:rgb(25,25,25); stroke-width:2}
+ path.ps1{fill:rgb(0,191,77); stroke:rgb(20,20,20); stroke-width:2}
+ rect.r1{fill:rgb(0,255,102); stroke:rgb(25,25,25); stroke-width:2}
+ path.p2{fill:rgb(204,255,0); stroke:rgb(25,25,25); stroke-width:2}
+ path.ps2{fill:rgb(153,191,0); stroke:rgb(20,20,20); stroke-width:2}
+ rect.r2{fill:rgb(204,255,0); stroke:rgb(25,25,25); stroke-width:2}
+ path.p3{fill:rgb(255,0,0); stroke:rgb(25,25,25); stroke-width:2}
+ path.ps3{fill:rgb(191,0,0); stroke:rgb(20,20,20); stroke-width:2}
+ rect.r3{fill:rgb(255,0,0); stroke:rgb(25,25,25); stroke-width:2}
+]]></style>
+
+ <rect class="background" width="1000" height="1000"/>
+  <!-- cells -->
+  <path class="p0" d="M 80 920 L 290 920 L 290 710 L 80 710 L 80 920"/>
+  <line x1="80" y1="920" x2="80" y2="710"/>
+  <line x1="80" y1="920" x2="290" y2="920"/>
+  <path class="p0" d="M 290 920 L 500 920 L 500 710 L 290 710 L 290 920"/>
+  <line x1="290" y1="920" x2="500" y2="920"/>
+  <line x1="290" y1="710" x2="500" y2="710"/>
+  <path class="p0" d="M 500 920 L 710 920 L 710 710 L 500 710 L 500 920"/>
+  <line x1="500" y1="920" x2="710" y2="920"/>
+  <line x1="500" y1="710" x2="710" y2="710"/>
+  <path class="p0" d="M 710 920 L 920 920 L 920 710 L 710 710 L 710 920"/>
+  <line x1="920" y1="920" x2="920" y2="710"/>
+  <line x1="710" y1="920" x2="920" y2="920"/>
+  <path class="p0" d="M 80 710 L 290 710 L 290 500 L 80 500 L 80 710"/>
+  <line x1="80" y1="710" x2="80" y2="500"/>
+  <line x1="290" y1="710" x2="290" y2="500"/>
+  <path class="p0" d="M 80 500 L 290 500 L 290 290 L 80 290 L 80 500"/>
+  <line x1="80" y1="500" x2="80" y2="290"/>
+  <line x1="290" y1="500" x2="290" y2="290"/>
+  <path class="p0" d="M 80 290 L 290 290 L 290 80 L 80 80 L 80 290"/>
+  <line x1="80" y1="290" x2="80" y2="80"/>
+  <line x1="80" y1="80" x2="290" y2="80"/>
+  <path class="p1" d="M 710 710 L 815 710 L 815 605 L 710 605 L 710 710"/>
+  <line x1="710" y1="710" x2="710" y2="605"/>
+  <path class="p1" d="M 815 710 L 920 710 L 920 605 L 815 605 L 815 710"/>
+  <line x1="920" y1="710" x2="920" y2="605"/>
+  <path class="p1" d="M 710 605 L 815 605 L 815 500 L 710 500 L 710 605"/>
+  <line x1="710" y1="605" x2="710" y2="500"/>
+  <path class="p1" d="M 815 605 L 920 605 L 920 500 L 815 500 L 815 605"/>
+  <line x1="920" y1="605" x2="920" y2="500"/>
+  <path class="p1" d="M 290 290 L 395 290 L 395 185 L 290 185 L 290 290"/>
+  <line x1="290" y1="290" x2="395" y2="290"/>
+  <path class="p1" d="M 395 290 L 500 290 L 500 185 L 395 185 L 395 290"/>
+  <line x1="395" y1="290" x2="500" y2="290"/>
+  <path class="p1" d="M 290 185 L 395 185 L 395 80 L 290 80 L 290 185"/>
+  <line x1="290" y1="80" x2="395" y2="80"/>
+  <path class="p1" d="M 395 185 L 500 185 L 500 80 L 395 80 L 395 185"/>
+  <line x1="395" y1="80" x2="500" y2="80"/>
+  <path class="p2" d="M 710 395 L 763 395 L 763 343 L 710 343 L 710 395"/>
+  <line x1="710" y1="395" x2="710" y2="343"/>
+  <path class="p2" d="M 763 395 L 815 395 L 815 343 L 763 343 L 763 395"/>
+  <path class="p2" d="M 815 395 L 868 395 L 868 343 L 815 343 L 815 395"/>
+  <path class="p2" d="M 868 395 L 920 395 L 920 343 L 868 343 L 868 395"/>
+  <line x1="920" y1="395" x2="920" y2="343"/>
+  <path class="p2" d="M 815 343 L 868 343 L 868 290 L 815 290 L 815 343"/>
+  <path class="p2" d="M 868 343 L 920 343 L 920 290 L 868 290 L 868 343"/>
+  <line x1="920" y1="343" x2="920" y2="290"/>
+  <path class="p2" d="M 605 290 L 658 290 L 658 238 L 605 238 L 605 290"/>
+  <line x1="605" y1="290" x2="658" y2="290"/>
+  <path class="p2" d="M 605 238 L 658 238 L 658 185 L 605 185 L 605 238"/>
+  <path class="p2" d="M 605 185 L 658 185 L 658 133 L 605 133 L 605 185"/>
+  <path class="p2" d="M 658 185 L 710 185 L 710 133 L 658 133 L 658 185"/>
+  <path class="p2" d="M 605 133 L 658 133 L 658 80 L 605 80 L 605 133"/>
+  <line x1="605" y1="80" x2="658" y2="80"/>
+  <path class="p2" d="M 658 133 L 710 133 L 710 80 L 658 80 L 658 133"/>
+  <line x1="658" y1="80" x2="710" y2="80"/>
+  <path class="p2" d="M 815 290 L 868 290 L 868 238 L 815 238 L 815 290"/>
+  <path class="p2" d="M 868 290 L 920 290 L 920 238 L 868 238 L 868 290"/>
+  <line x1="920" y1="290" x2="920" y2="238"/>
+  <path class="p2" d="M 868 238 L 920 238 L 920 185 L 868 185 L 868 238"/>
+  <line x1="920" y1="238" x2="920" y2="185"/>
+  <path class="p2" d="M 710 185 L 763 185 L 763 133 L 710 133 L 710 185"/>
+  <path class="p2" d="M 710 133 L 763 133 L 763 80 L 710 80 L 710 133"/>
+  <line x1="710" y1="80" x2="763" y2="80"/>
+  <path class="p2" d="M 763 133 L 815 133 L 815 80 L 763 80 L 763 133"/>
+  <line x1="763" y1="80" x2="815" y2="80"/>
+  <path class="p2" d="M 868 185 L 920 185 L 920 133 L 868 133 L 868 185"/>
+  <line x1="920" y1="185" x2="920" y2="133"/>
+  <path class="p2" d="M 815 133 L 868 133 L 868 80 L 815 80 L 815 133"/>
+  <line x1="815" y1="80" x2="868" y2="80"/>
+  <path class="p2" d="M 868 133 L 920 133 L 920 80 L 868 80 L 868 133"/>
+  <line x1="920" y1="133" x2="920" y2="80"/>
+  <line x1="868" y1="80" x2="920" y2="80"/>
+  <path class="p2" d="M 710 500 L 763 500 L 763 448 L 710 448 L 710 500"/>
+  <line x1="710" y1="500" x2="710" y2="448"/>
+  <path class="p2" d="M 763 500 L 815 500 L 815 448 L 763 448 L 763 500"/>
+  <path class="p2" d="M 710 448 L 763 448 L 763 395 L 710 395 L 710 448"/>
+  <line x1="710" y1="448" x2="710" y2="395"/>
+  <path class="p2" d="M 763 448 L 815 448 L 815 395 L 763 395 L 763 448"/>
+  <path class="p2" d="M 815 500 L 868 500 L 868 448 L 815 448 L 815 500"/>
+  <path class="p2" d="M 868 500 L 920 500 L 920 448 L 868 448 L 868 500"/>
+  <line x1="920" y1="500" x2="920" y2="448"/>
+  <path class="p2" d="M 815 448 L 868 448 L 868 395 L 815 395 L 815 448"/>
+  <path class="p2" d="M 868 448 L 920 448 L 920 395 L 868 395 L 868 448"/>
+  <line x1="920" y1="448" x2="920" y2="395"/>
+  <path class="p2" d="M 500 290 L 553 290 L 553 238 L 500 238 L 500 290"/>
+  <line x1="500" y1="290" x2="553" y2="290"/>
+  <path class="p2" d="M 553 290 L 605 290 L 605 238 L 553 238 L 553 290"/>
+  <line x1="553" y1="290" x2="605" y2="290"/>
+  <path class="p2" d="M 500 238 L 553 238 L 553 185 L 500 185 L 500 238"/>
+  <path class="p2" d="M 553 238 L 605 238 L 605 185 L 553 185 L 553 238"/>
+  <path class="p2" d="M 500 185 L 553 185 L 553 133 L 500 133 L 500 185"/>
+  <path class="p2" d="M 553 185 L 605 185 L 605 133 L 553 133 L 553 185"/>
+  <path class="p2" d="M 500 133 L 553 133 L 553 80 L 500 80 L 500 133"/>
+  <line x1="500" y1="80" x2="553" y2="80"/>
+  <path class="p2" d="M 553 133 L 605 133 L 605 80 L 553 80 L 553 133"/>
+  <line x1="553" y1="80" x2="605" y2="80"/>
+  <path class="p3" d="M 710 343 L 736 343 L 736 316 L 710 316 L 710 343"/>
+  <line x1="710" y1="343" x2="710" y2="316"/>
+  <path class="p3" d="M 736 343 L 763 343 L 763 316 L 736 316 L 736 343"/>
+  <path class="p3" d="M 710 316 L 736 316 L 736 290 L 710 290 L 710 316"/>
+  <line x1="710" y1="316" x2="710" y2="290"/>
+  <path class="p3" d="M 736 316 L 763 316 L 763 290 L 736 290 L 736 316"/>
+  <path class="p3" d="M 763 343 L 789 343 L 789 316 L 763 316 L 763 343"/>
+  <path class="p3" d="M 789 343 L 815 343 L 815 316 L 789 316 L 789 343"/>
+  <path class="p3" d="M 763 316 L 789 316 L 789 290 L 763 290 L 763 316"/>
+  <path class="p3" d="M 789 316 L 815 316 L 815 290 L 789 290 L 789 316"/>
+  <path class="p3" d="M 658 290 L 684 290 L 684 264 L 658 264 L 658 290"/>
+  <line x1="658" y1="290" x2="684" y2="290"/>
+  <path class="p3" d="M 684 290 L 710 290 L 710 264 L 684 264 L 684 290"/>
+  <line x1="684" y1="290" x2="710" y2="290"/>
+  <path class="p3" d="M 658 264 L 684 264 L 684 238 L 658 238 L 658 264"/>
+  <path class="p3" d="M 684 264 L 710 264 L 710 238 L 684 238 L 684 264"/>
+  <path class="p3" d="M 658 238 L 684 238 L 684 211 L 658 211 L 658 238"/>
+  <path class="p3" d="M 684 238 L 710 238 L 710 211 L 684 211 L 684 238"/>
+  <path class="p3" d="M 658 211 L 684 211 L 684 185 L 658 185 L 658 211"/>
+  <path class="p3" d="M 684 211 L 710 211 L 710 185 L 684 185 L 684 211"/>
+  <path class="p3" d="M 710 290 L 736 290 L 736 264 L 710 264 L 710 290"/>
+  <path class="p3" d="M 736 290 L 763 290 L 763 264 L 736 264 L 736 290"/>
+  <path class="p3" d="M 710 264 L 736 264 L 736 238 L 710 238 L 710 264"/>
+  <path class="p3" d="M 736 264 L 763 264 L 763 238 L 736 238 L 736 264"/>
+  <path class="p3" d="M 763 290 L 789 290 L 789 264 L 763 264 L 763 290"/>
+  <path class="p3" d="M 789 290 L 815 290 L 815 264 L 789 264 L 789 290"/>
+  <path class="p3" d="M 763 264 L 789 264 L 789 238 L 763 238 L 763 264"/>
+  <path class="p3" d="M 789 264 L 815 264 L 815 238 L 789 238 L 789 264"/>
+  <path class="p3" d="M 710 238 L 736 238 L 736 211 L 710 211 L 710 238"/>
+  <path class="p3" d="M 736 238 L 763 238 L 763 211 L 736 211 L 736 238"/>
+  <path class="p3" d="M 710 211 L 736 211 L 736 185 L 710 185 L 710 211"/>
+  <path class="p3" d="M 736 211 L 763 211 L 763 185 L 736 185 L 736 211"/>
+  <path class="p3" d="M 763 238 L 789 238 L 789 211 L 763 211 L 763 238"/>
+  <path class="p3" d="M 789 238 L 815 238 L 815 211 L 789 211 L 789 238"/>
+  <path class="p3" d="M 763 211 L 789 211 L 789 185 L 763 185 L 763 211"/>
+  <path class="p3" d="M 789 211 L 815 211 L 815 185 L 789 185 L 789 211"/>
+  <path class="p3" d="M 815 238 L 841 238 L 841 211 L 815 211 L 815 238"/>
+  <path class="p3" d="M 841 238 L 868 238 L 868 211 L 841 211 L 841 238"/>
+  <path class="p3" d="M 815 211 L 841 211 L 841 185 L 815 185 L 815 211"/>
+  <path class="p3" d="M 841 211 L 868 211 L 868 185 L 841 185 L 841 211"/>
+  <path class="p3" d="M 763 185 L 789 185 L 789 159 L 763 159 L 763 185"/>
+  <path class="p3" d="M 789 185 L 815 185 L 815 159 L 789 159 L 789 185"/>
+  <path class="p3" d="M 763 159 L 789 159 L 789 133 L 763 133 L 763 159"/>
+  <path class="p3" d="M 789 159 L 815 159 L 815 133 L 789 133 L 789 159"/>
+  <path class="p3" d="M 815 185 L 841 185 L 841 159 L 815 159 L 815 185"/>
+  <path class="p3" d="M 841 185 L 868 185 L 868 159 L 841 159 L 841 185"/>
+  <path class="p3" d="M 815 159 L 841 159 L 841 133 L 815 133 L 815 159"/>
+  <path class="p3" d="M 841 159 L 868 159 L 868 133 L 841 133 L 841 159"/>
+
+</svg>

@@ -1,0 +1,10 @@
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/rebuild_cache.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/info.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/edit_cache.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/strip_comments.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/runclean.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/release.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/debug.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/run.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/distclean.dir
+/workspaces/deal.ii-course-practice/Translator_file/examples/step-9/CMakeFiles/step-9.dir
